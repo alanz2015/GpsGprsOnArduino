@@ -389,7 +389,7 @@ void initGprs()
 	if (sendCommand("AT\r\n", "OK\r\n", 3000, 10) == Success);
 	else errorLog(1);
 
-	if (sendCommand("AT+CREG?\r\n", ",1", 3000, 10) == Success);	//本地SIM卡
+	if (sendCommand("AT+CREG?\r\n", "0,", 3000, 10) == Success);	//本地SIM卡
 	else if(sendCommand("AT+CREG?\r\n", ",5", 3000, 10) == Success	);//漫游SIM卡
 	else	errorLog(3);
 	delay(10);
@@ -397,7 +397,7 @@ void initGprs()
 	if (sendCommand("AT+CGCLASS=\"B\"\r\n", "OK\r\n", 3000, 2) == Success);
 	else errorLog(3);
 
-	if (sendCommand("AT+CGDCONT=1,\"IP\",\"uninet\"\r\n", "OK", 3000, 2) == Success);
+	if (sendCommand("AT+CGDCONT=1,\"IP\",\"cmnet\"\r\n", "OK", 3000, 2) == Success);
 	else errorLog(4);
 
 	if (sendCommand("AT+CGATT=1\r\n", "OK\r\n", 3000, 2) == Success);
