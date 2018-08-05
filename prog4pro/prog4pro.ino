@@ -444,7 +444,7 @@ void initGprs()
 
 	if (sendCommand("AT+CGCLASS=\"B\"\r\n", "OK\r\n", 3000, 2) == Success);
 	else errorLog(3);
-
+  // 3gnet for UNICOM, cmnet for CMMC
 	if (sendCommand("AT+CGDCONT=1,\"IP\",\"cmnet\"\r\n", "OK", 3000, 2) == Success);
 	else errorLog(4);
 
