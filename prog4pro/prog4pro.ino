@@ -1,6 +1,4 @@
 /*
- * So far, after adjust the logic, it seems to be work.
- * 
  * Recommended Minimum Specific GPS/TRANSIT Data（RMC）: $GNRMC,
  * UTC時間，hhmmss（時分秒）格式 : 081712.000,
  * 定位狀態，A=有效定位，V=無效定位 : A,
@@ -10,6 +8,12 @@
  * 經度半球E（東經）或W（西經）: E,
  * 地面速率（000.0~999.9節，前面的0也將被傳輸）: 0.00,
  * 地面航向（000.0~359.9度，以真北為參考基準，前面的0也將被傳輸）: 301.04,20$GNGGA,081713.000
+ * GRPS Location:
+ * AT+SAPBR=1,1  //激活网络场景
+ * AT+SAPBR=2,1  //获取分配IP地址
+ * AT+CIPGSMLOC=1,1 //获得定位信息
+ * AT+CIPGSMLOC=2,1 //获得时间信息
+ * AT+SAPBR=0,1 //关闭网络场景
  *
  */
 #include "TimerOne.h"
@@ -53,7 +57,7 @@ char OneNetServer[] = "api.heclouds.com";       //不需要修改
 char device_id[] = "31027885";    //修改为自己的设备ID
 char API_KEY[] = "rLhsBYEcRfk6BBAwcpNHKIZ199Y=";    //修改为自己的API_KEY
 char sensor_gps[] = "location";
-char sensor_temp[] = "TEMP";
+char sensor_level[] = "Level";  // Water level
 
 void setup() {
 	pinMode(L, OUTPUT);
@@ -70,10 +74,8 @@ void setup() {
 
 	Timer1.initialize(1000);
 	Timer1.attachInterrupt(Timer1_handler);
-  #if 1
 	initGprs();
-  #endif
-	DebugSerial.println("\r\nsetup end!");
+	DebugSerial.println("\r\nSetup done!");
 }
 
 void loop() {
@@ -83,9 +85,8 @@ void loop() {
 		gpsRead();  //获取GPS数据
 		parseGpsBuffer();//解析GPS数据		
 	}
-  #if 1
+
 	printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
-  #endif
 }
 
 void postDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* sensor_id_temp, float data_value)
@@ -168,13 +169,14 @@ void printGpsBuffer()
 			DebugSerial.println(Save_Data.longitude);
 			DebugSerial.print("Save_Data.E_W = ");
 			DebugSerial.println(Save_Data.E_W);
-      #if 0
+      #if 1
 			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude);
       #endif
+      DebugSerial.println("GPS DATA is usefull!");
 		}
 		else
 		{
-			DebugSerial.println("GPS DATA is not usefull!");
+			DebugSerial.println("GPS DATA is NOT usefull!");
 		}
 
 	}
@@ -187,9 +189,9 @@ void parseGpsBuffer()
 	if (Save_Data.isGetData)
 	{
 		Save_Data.isGetData = false;
-		DebugSerial.println("*********** Input GPS Raw Data ******************");
+		DebugSerial.println("*************** Input GPS Raw Data ******************");
 		DebugSerial.println(Save_Data.GPS_Buffer);
-        DebugSerial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    DebugSerial.println("+---------------------------------------------------+");
 
 		for (int i = 0 ; i <= 6 ; i++)
 		{
@@ -206,12 +208,27 @@ void parseGpsBuffer()
 					char usefullBuffer[2];
 					switch (i)
 					{
-					case 1: memcpy(Save_Data.UTCTime, subString, subStringNext - subString); break; //获取UTC时间
-					case 2: memcpy(usefullBuffer, subString, subStringNext - subString); break; //获取UTC时间
-					case 3: memcpy(Save_Data.latitude, subString, subStringNext - subString); break; //获取纬度信息
-					case 4: memcpy(Save_Data.N_S, subString, subStringNext - subString); break; //获取N/S
-					case 5: memcpy(Save_Data.longitude, subString, subStringNext - subString); break; //获取纬度信息
-					case 6: memcpy(Save_Data.E_W, subString, subStringNext - subString); break; //获取E/W
+					case 1: 
+					  memcpy(Save_Data.UTCTime, subString, subStringNext - subString); 
+            #if 1
+            DebugSerial.println(Save_Data.UTCTime);
+            #endif
+					  break; //获取UTC时间
+					case 2: 
+					  memcpy(usefullBuffer, subString, subStringNext - subString); 
+					  break; //获取UTC时间
+					case 3: 
+					  memcpy(Save_Data.latitude, subString, subStringNext - subString); 
+					  break; //获取纬度信息
+					case 4: 
+					  memcpy(Save_Data.N_S, subString, subStringNext - subString); 
+					  break; //获取N/S
+					case 5: 
+					  memcpy(Save_Data.longitude, subString, subStringNext - subString); 
+					  break; //获取纬度信息
+					case 6: 
+					  memcpy(Save_Data.E_W, subString, subStringNext - subString); 
+					  break; //获取E/W
 
 					default: break;
 					}
@@ -238,12 +255,18 @@ void parseGpsBuffer()
 //
 // Format Description:
 // http://b8807053.pixnet.net/blog/post/3610870-gps%E8%B3%87%E6%96%99%E6%A0%BC%E5%BC%8F
+// RMC : UTC時間、定位狀態（A－可用，V－可能有錯誤）、緯度值、經度值、對地速度、日期等
 // $GPGSV,4,1,13,02,58,044,,05,56,346,,13,54,173,19,06,28,093,*7E
 // $GPGSA,A,3,15,20,25,,,,,,,,,,5.06,4.96,0.99*0B
 // 定位模式（M－手動，強制二維或三維定位；A－自動，自動二維或三維定位）、定位中使用的衛星ID號、PDOP值、HDOP值、VDOP值
 //
 
 void gpsRead() {
+  char *subString;
+  char *subStringNext;
+  char checkSatNb[4];
+  int nbSat;
+    
 	while (GpsSerial.available())
 	{
 		gpsRxBuffer[gpsRxCount] = GpsSerial.read();
@@ -251,27 +274,52 @@ void gpsRead() {
 		{
 			char* GPS_BufferHead;
 			char* GPS_BufferTail;
-            #if 0
-            DebugSerial.println("Received GPS data:");
-            DebugSerial.print(gpsRxBuffer);
-            DebugSerial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            #endif
+
+      #if 1
+      DebugSerial.println("Received GPS data:");
+      DebugSerial.print(gpsRxBuffer);
+      DebugSerial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      #endif
+
+      /*
+       * First parse xxGSV to understand how many satellites can be watched.
+       */
+      if (((GPS_BufferHead = strstr(gpsRxBuffer, "$GPGSV,")) != NULL) || ((GPS_BufferHead = strstr(gpsRxBuffer, "$GLGSV,")) != NULL)) {
+        subString = GPS_BufferHead + 7;
+        subStringNext = strstr(subString, ","); // Process from the start char just after "$GPGSV," to locate ","
+        if (subStringNext != NULL) {
+          subString = subStringNext + 1;  // Skip Nb of GSV msg
+          subStringNext = strstr(subString, ",");
+          if (subStringNext != NULL) {
+            subString = subStringNext + 1;  // Skip Nb of self nb
+            memset(checkSatNb, 0, sizeof(checkSatNb));
+            memcpy(checkSatNb, subString, 2);
+            DebugSerial.println("---- Current Watch Satellite ----");
+            DebugSerial.println(checkSatNb);
+            nbSat = atoi(checkSatNb);
+            if (nbSat < 3) {
+              DebugSerial.print("Fail to locate satellite, ");
+              DebugSerial.println(nbSat);
+            }
+          }
+        }
+      }
+      
 			if ((GPS_BufferHead = strstr(gpsRxBuffer, "$GPRMC,")) != NULL || (GPS_BufferHead = strstr(gpsRxBuffer, "$GNRMC,")) != NULL )
 			{
+
 				if (((GPS_BufferTail = strstr(GPS_BufferHead, "\r\n")) != NULL) && (GPS_BufferTail > GPS_BufferHead))
 				{
 					memcpy(Save_Data.GPS_Buffer, GPS_BufferHead, GPS_BufferTail - GPS_BufferHead);
 					Save_Data.isGetData = true;
-
-					clrGpsRxBuffer();
 				}
+
 			}
-			clrGpsRxBuffer();
+      clrGpsRxBuffer();
 		}
-		if (gpsRxCount == gpsRxBufferLength)clrGpsRxBuffer();
+		if (gpsRxCount == gpsRxBufferLength)
+		  clrGpsRxBuffer();
 	}
-
-
 }
 
 void clrGpsRxBuffer(void)
@@ -463,16 +511,11 @@ unsigned int sendCommand(char *Command, char *Response, unsigned long Timeout, u
 	return Failure;
 }
 
-
-
-
 void Timer1_handler(void)
 {
 	Time_Cont++;
 	Time_Cont2++;
 }
-
-
 
 void gprsReadBuffer() {
 	while (GprsSerail.available())
