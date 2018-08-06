@@ -27,13 +27,13 @@ struct
 	char GPS_Buffer[80];
 	bool isGetData;   //是否获取到GPS数据
 	bool isParseData; //是否解析完成
-	char UTCTime[11];   //UTC时间
-	char latitude[11];    //纬度
-	char N_S[2];    //N/S
+	char UTCTime[6];   //UTC时间
+	char latitude[12];    //纬度
+	char N_S[1];    //N/S
 	char longitude[12];   //经度
-	char E_W[2];    //E/W
+	char E_W[1];    //E/W
 	bool isUsefull;   //定位信息是否有效
-  char UTCDate[11]; // Date information
+  char UTCDate[12]; // Date information
 } Save_Data;
 
 const unsigned int gpsRxBufferLength = 600;
@@ -186,69 +186,85 @@ void parseGpsBuffer()
 {
 	char *subString;
 	char *subStringNext;
+  char localString[20];
+  
 	if (Save_Data.isGetData)
 	{
 		Save_Data.isGetData = false;
-		DebugSerial.println("*************** Input GPS Raw Data ******************");
-		DebugSerial.println(Save_Data.GPS_Buffer);
-    DebugSerial.println("+---------------------------------------------------+");
 
-		for (int i = 0 ; i <= 6 ; i++)
-		{
-			if (i == 0)
-			{
-				if ((subString = strstr(Save_Data.GPS_Buffer, ",")) == NULL)
-					errorLog(12);  //解析错误
-			}
-			else
-			{
-				subString++;
-				if ((subStringNext = strstr(subString, ",")) != NULL)
-				{
-					char usefullBuffer[2];
-					switch (i)
-					{
-					case 1: 
-					  memcpy(Save_Data.UTCTime, subString, subStringNext - subString); 
-            #if 1
-            DebugSerial.println(Save_Data.UTCTime);
-            #endif
-					  break; //获取UTC时间
-					case 2: 
-					  memcpy(usefullBuffer, subString, subStringNext - subString); 
-					  break; //获取UTC时间
-					case 3: 
-					  memcpy(Save_Data.latitude, subString, subStringNext - subString); 
-					  break; //获取纬度信息
-					case 4: 
-					  memcpy(Save_Data.N_S, subString, subStringNext - subString); 
-					  break; //获取N/S
-					case 5: 
-					  memcpy(Save_Data.longitude, subString, subStringNext - subString); 
-					  break; //获取纬度信息
-					case 6: 
-					  memcpy(Save_Data.E_W, subString, subStringNext - subString); 
-					  break; //获取E/W
+    #if 1
+    subString = &Save_Data.GPS_Buffer[7]; // Override "$GPRMC,"
+    subStringNext = strstr(subString, ",");
+    if (subStringNext != NULL) {
+      // Extract UTC Time hhmmss:xxx
+      memset(localString, 0, sizeof(localString));
+      memcpy(localString, subString, (subStringNext - subString));
+      memcpy(Save_Data.UTCTime, localString, sizeof(Save_Data.UTCTime));
 
-					default: break;
-					}
+      subString = subStringNext + 1;
+      subStringNext = strstr(subString, ",");
+      if (subStringNext != NULL) {
+        // Extract message validation symbol
+        memset(localString, 0, sizeof(localString));
+        memcpy(localString, subString, (subStringNext - subString));
+        if (localString[0] == 'A')
+          Save_Data.isUsefull = true;
+        else if (localString[0] == 'V')
+          Save_Data.isUsefull = false;
+        else
+          DebugSerial.println("Error Active/Valid indication.");
 
-					subString = subStringNext;
-					Save_Data.isParseData = true;
-					if (usefullBuffer[0] == 'A')
-						Save_Data.isUsefull = true;
-					else if (usefullBuffer[0] == 'V')
-						Save_Data.isUsefull = false;
+        subString = subStringNext + 1;
+        subStringNext = strstr(subString, ",");
+        if (subStringNext != NULL) {
+          // Extract Latitude
+          memset(localString, 0, sizeof(localString));
+          memcpy(localString, subString, (subStringNext - subString));
+          memcpy(Save_Data.latitude, localString, sizeof(Save_Data.latitude));
 
-				}
-				else
-				{
-					errorLog(13);  //解析错误
-				}
-			}
+          subString = subStringNext + 1;
+          memset(Save_Data.N_S, 0, sizeof(Save_Data.N_S));
+          memcpy(Save_Data.N_S, subString, sizeof(Save_Data.N_S));
 
+          subStringNext = strstr(subString, ",");
+          if (subStringNext != NULL) {
+            subString = subStringNext + 1;
+            subStringNext = strstr(subString, ",");
+            if (subStringNext != NULL) {
+              // Extract longitude
+              memset(localString, 0, sizeof(localString));
+              memcpy(localString, subString, (subStringNext - subString));
+              memcpy(Save_Data.longitude, localString, sizeof(Save_Data.longitude));
 
-		}
+              subString = subStringNext + 1;
+              memset(Save_Data.E_W, 0, sizeof(Save_Data.E_W));
+              memcpy(Save_Data.E_W, subString, sizeof(Save_Data.E_W));
+
+              subStringNext = strstr(subString, ",");
+              if (subStringNext != NULL) {
+                // Override ground speed field
+                subString = subStringNext + 1;
+                subStringNext = strstr(subString, ",");
+                if (subStringNext != NULL) {
+                  // Extract ddmmyy
+                  memset(localString, 0, sizeof(localString));
+                  memcpy(localString, subString, (subStringNext - subString));
+                  memcpy(Save_Data.UTCDate, localString, sizeof(Save_Data.UTCDate));
+                  DebugSerial.println("++++++++++ Extract Date Information ++++++++++++");
+                  DebugSerial.println(Save_Data.UTCDate);
+                  Save_Data.isParseData = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    else {
+      errorLog(12);  //解析错误
+      return;
+    }
+    #endif
 	}
 }
 
@@ -257,7 +273,6 @@ void parseGpsBuffer()
 // http://b8807053.pixnet.net/blog/post/3610870-gps%E8%B3%87%E6%96%99%E6%A0%BC%E5%BC%8F
 // RMC : UTC時間、定位狀態（A－可用，V－可能有錯誤）、緯度值、經度值、對地速度、日期等
 // $GPGSV,4,1,13,02,58,044,,05,56,346,,13,54,173,19,06,28,093,*7E
-// $GPGSA,A,3,15,20,25,,,,,,,,,,5.06,4.96,0.99*0B
 // 定位模式（M－手動，強制二維或三維定位；A－自動，自動二維或三維定位）、定位中使用的衛星ID號、PDOP值、HDOP值、VDOP值
 //
 
@@ -275,8 +290,8 @@ void gpsRead() {
 			char* GPS_BufferHead;
 			char* GPS_BufferTail;
 
-      #if 1
-      DebugSerial.println("Received GPS data:");
+      #if 0
+      DebugSerial.println("Received GPS data from serial port:");
       DebugSerial.print(gpsRxBuffer);
       DebugSerial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
       #endif
@@ -294,11 +309,13 @@ void gpsRead() {
             subString = subStringNext + 1;  // Skip Nb of self nb
             memset(checkSatNb, 0, sizeof(checkSatNb));
             memcpy(checkSatNb, subString, 2);
-            DebugSerial.println("---- Current Watch Satellite ----");
-            DebugSerial.println(checkSatNb);
             nbSat = atoi(checkSatNb);
             if (nbSat < 3) {
               DebugSerial.print("Fail to locate satellite, ");
+              DebugSerial.println(nbSat);
+            }
+            else {
+              DebugSerial.print("Success to lock GPS satellite, ");
               DebugSerial.println(nbSat);
             }
           }
@@ -312,6 +329,11 @@ void gpsRead() {
 				{
 					memcpy(Save_Data.GPS_Buffer, GPS_BufferHead, GPS_BufferTail - GPS_BufferHead);
 					Save_Data.isGetData = true;
+          #if 1
+          DebugSerial.println("----------------- Extracted GPS RMC Data ---------------------");
+          DebugSerial.println(Save_Data.GPS_Buffer);
+          DebugSerial.println("----------------- Extracted GPS RMC Data ---------------------");
+          #endif
 				}
 
 			}
