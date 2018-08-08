@@ -45,6 +45,10 @@ unsigned int gpsRxCount = 0;
 
 int L = 13; //LED指示灯引脚
 
+int redLED = 31;
+int yellowLED = 33;
+int greenLED = 35;
+
 unsigned long  Time_Cont = 0;       //定时器计数器
 unsigned long  Time_Cont2 = 0;       //定时器计数器
 
@@ -62,6 +66,25 @@ char sensor_level[] = "Level";  // Water level
 void setup() {
 	pinMode(L, OUTPUT);
 	digitalWrite(L, LOW);
+
+  /*
+   * Setup 3-Color LED display control pins
+   */
+  pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+
+  digitalWrite(redLED, HIGH);
+  digitalWrite(yellowLED, HIGH);
+  digitalWrite(greenLED, HIGH);
+
+  delay(4);
+  digitalWrite(redLED, LOW);
+  digitalWrite(yellowLED, LOW);
+  digitalWrite(greenLED, LOW);
+  /*
+   * Done 3-Color LED self-checking
+   */
 
 	Save_Data.isGetData = false;
 	Save_Data.isParseData = false;
