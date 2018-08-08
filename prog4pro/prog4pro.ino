@@ -48,6 +48,7 @@ int L = 13; //LED指示灯引脚
 int redLED = 31;
 int yellowLED = 33;
 int greenLED = 35;
+int waterLevelPin = 12;  // Water level sensor data
 
 unsigned long  Time_Cont = 0;       //定时器计数器
 unsigned long  Time_Cont2 = 0;       //定时器计数器
@@ -78,7 +79,7 @@ void setup() {
   digitalWrite(yellowLED, HIGH);
   digitalWrite(greenLED, HIGH);
 
-  delay(4);
+  delay(4000);
   digitalWrite(redLED, LOW);
   digitalWrite(yellowLED, LOW);
   digitalWrite(greenLED, LOW);
@@ -102,6 +103,8 @@ void setup() {
 }
 
 void loop() {
+  float waterLevel = 0.0;
+  
 	Time_Cont2 = 0;
 	while (Time_Cont2 < 5000)	//5s内不停读取GPS
 	{
@@ -110,6 +113,11 @@ void loop() {
 	}
 
 	printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
+
+  waterLevel = analogRead(waterLevelPin);
+  #if 1
+  DebugSerial.println(waterLevel);
+  #endif 
 }
 
 void postDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* sensor_id_temp, float data_value)
