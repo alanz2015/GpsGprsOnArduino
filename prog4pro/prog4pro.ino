@@ -16,6 +16,11 @@
  * AT+SAPBR=0,1 //关闭网络场景
  *
  */
+
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_ADXL345_U.h>
+
 #include "TimerOne.h"
 
 #define DebugSerial Serial
@@ -35,6 +40,9 @@ struct
 	bool isUsefull;   //定位信息是否有效
   char UTCDate[12]; // Date information
 } Save_Data;
+
+/* Assign a unique ID to this sensor at the same time */
+Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 
 const unsigned int gpsRxBufferLength = 600;
 char gpsRxBuffer[gpsRxBufferLength];
@@ -64,6 +72,109 @@ char API_KEY[] = "rLhsBYEcRfk6BBAwcpNHKIZ199Y=";    //修改为自己的API_KEY
 char sensor_gps[] = "location";
 char sensor_level[] = "Level";  // Water level
 
+void displaySensorDetails(void)
+{
+  sensor_t sensor;
+  accel.getSensor(&sensor);
+  DebugSerial.println("------------------------------------");
+  DebugSerial.print  ("Sensor:       "); DebugSerial.println(sensor.name);
+  DebugSerial.print  ("Driver Ver:   "); DebugSerial.println(sensor.version);
+  DebugSerial.print  ("Unique ID:    "); DebugSerial.println(sensor.sensor_id);
+  DebugSerial.print  ("Max Value:    "); DebugSerial.print(sensor.max_value);  DebugSerial.println(" m/s^2");
+  DebugSerial.print  ("Min Value:    "); DebugSerial.print(sensor.min_value);  DebugSerial.println(" m/s^2");
+  DebugSerial.print  ("Resolution:   "); DebugSerial.print(sensor.resolution); DebugSerial.println(" m/s^2");  
+  DebugSerial.println("------------------------------------");
+  DebugSerial.println("");
+  delay(500);
+}
+
+
+void displayDataRate(void)
+{
+  DebugSerial.print  ("Data Rate:    "); 
+  
+  switch(accel.getDataRate())
+  {
+    case ADXL345_DATARATE_3200_HZ:
+      DebugSerial.print  ("3200 "); 
+      break;
+    case ADXL345_DATARATE_1600_HZ:
+      DebugSerial.print  ("1600 "); 
+      break;
+    case ADXL345_DATARATE_800_HZ:
+      DebugSerial.print  ("800 "); 
+      break;
+    case ADXL345_DATARATE_400_HZ:
+      DebugSerial.print  ("400 "); 
+      break;
+    case ADXL345_DATARATE_200_HZ:
+      DebugSerial.print  ("200 "); 
+      break;
+    case ADXL345_DATARATE_100_HZ:
+      DebugSerial.print  ("100 "); 
+      break;
+    case ADXL345_DATARATE_50_HZ:
+      DebugSerial.print  ("50 "); 
+      break;
+    case ADXL345_DATARATE_25_HZ:
+      DebugSerial.print  ("25 "); 
+      break;
+    case ADXL345_DATARATE_12_5_HZ:
+      DebugSerial.print  ("12.5 "); 
+      break;
+    case ADXL345_DATARATE_6_25HZ:
+      DebugSerial.print  ("6.25 "); 
+      break;
+    case ADXL345_DATARATE_3_13_HZ:
+      DebugSerial.print  ("3.13 "); 
+      break;
+    case ADXL345_DATARATE_1_56_HZ:
+      DebugSerial.print  ("1.56 "); 
+      break;
+    case ADXL345_DATARATE_0_78_HZ:
+      DebugSerial.print  ("0.78 "); 
+      break;
+    case ADXL345_DATARATE_0_39_HZ:
+      DebugSerial.print  ("0.39 "); 
+      break;
+    case ADXL345_DATARATE_0_20_HZ:
+      DebugSerial.print  ("0.20 "); 
+      break;
+    case ADXL345_DATARATE_0_10_HZ:
+      DebugSerial.print  ("0.10 "); 
+      break;
+    default:
+      DebugSerial.print  ("Invalid datarate  "); 
+      break;
+  }  
+  DebugSerial.println(" Hz");  
+}
+
+void displayRange(void)
+{
+  DebugSerial.print  ("Range:         +/- "); 
+  
+  switch(accel.getRange())
+  {
+    case ADXL345_RANGE_16_G:
+      DebugSerial.print  ("16 "); 
+      break;
+    case ADXL345_RANGE_8_G:
+      DebugSerial.print  ("8 "); 
+      break;
+    case ADXL345_RANGE_4_G:
+      DebugSerial.print  ("4 "); 
+      break;
+    case ADXL345_RANGE_2_G:
+      DebugSerial.print  ("2 "); 
+      break;
+    default:
+      DebugSerial.print  ("?? "); 
+      break;
+  }  
+  DebugSerial.println(" g");  
+}
+
 void setup() {
 	pinMode(L, OUTPUT);
 	digitalWrite(L, LOW);
@@ -79,12 +190,12 @@ void setup() {
   digitalWrite(yellowLED, HIGH);
   digitalWrite(greenLED, HIGH);
 
-  delay(4000);
+  delay(3000);
   digitalWrite(redLED, LOW);
   digitalWrite(yellowLED, LOW);
   digitalWrite(greenLED, LOW);
   /*
-   * Done 3-Color LED self-checking
+   * Done 3-Color LED self-checking to indicate system power-on
    */
 
 	Save_Data.isGetData = false;
@@ -96,6 +207,35 @@ void setup() {
 	GprsSerail.begin(9600);
 	GpsSerial.begin(115200);      //115200，和我们店铺的GPS输出的波特率一致
 
+  /*
+   * Initialize ADXL345
+   */
+  DebugSerial.println("Accelerometer Test"); 
+  DebugSerial.println("");
+  
+  /* Initialise the sensor */
+  if(!accel.begin())
+  {
+    /* There was a problem detecting the ADXL345 ... check your connections */
+    DebugSerial.println("Ooops, no ADXL345 detected ... Check your wiring!");
+    while(1);
+  }
+
+  /* Set the range to whatever is appropriate for your project */
+  // accel.setRange(ADXL345_RANGE_16_G);
+  // displaySetRange(ADXL345_RANGE_8_G);
+  // displaySetRange(ADXL345_RANGE_4_G);
+  accel.setRange(ADXL345_RANGE_2_G);
+  
+  /* Display some basic information on this sensor */
+  displaySensorDetails();
+  
+  /* Display additional settings (outside the scope of sensor_t) */
+  displayDataRate();
+  displayRange();
+  Serial.println("");
+
+
 	Timer1.initialize(1000);
 	Timer1.attachInterrupt(Timer1_handler);
 	initGprs();
@@ -103,6 +243,9 @@ void setup() {
 }
 
 void loop() {
+  /* Get a new sensor event */ 
+  sensors_event_t event; 
+  /* Analog input from water level sensor */
   float waterLevel = 0.0;
   
 	Time_Cont2 = 0;
@@ -115,9 +258,18 @@ void loop() {
 	printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
 
   waterLevel = analogRead(waterLevelPin);
+  
   #if 1
   DebugSerial.println(waterLevel);
-  #endif 
+  #endif
+  
+  #if 1
+  accel.getEvent(&event);
+  /* Display the results (acceleration is measured in m/s^2) */
+  DebugSerial.print("X: "); DebugSerial.print(event.acceleration.x); DebugSerial.print("  ");
+  DebugSerial.print("Y: "); DebugSerial.print(event.acceleration.y); DebugSerial.print("  ");
+  DebugSerial.print("Z: "); DebugSerial.print(event.acceleration.z); DebugSerial.print("  ");DebugSerial.println("m/s^2 ");
+  #endif
 }
 
 void postDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* sensor_id_temp, float data_value)
@@ -498,7 +650,7 @@ void initGprs()
 	if (sendCommand("AT+CGCLASS=\"B\"\r\n", "OK\r\n", 3000, 2) == Success);
 	else errorLog(3);
   // 3gnet for UNICOM, cmnet for CMMC
-	if (sendCommand("AT+CGDCONT=1,\"IP\",\"cmnet\"\r\n", "OK", 3000, 2) == Success);
+	if (sendCommand("AT+CGDCONT=1,\"IP\",\"3gnet\"\r\n", "OK", 3000, 2) == Success);
 	else errorLog(4);
 
 	if (sendCommand("AT+CGATT=1\r\n", "OK\r\n", 3000, 2) == Success);

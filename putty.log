@@ -1,0 +1,1096 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2018.08.19 22:42:12 =~=~=~=~=~=~=~=~=~=~=~=
+Accelerometer Test
++++++++ Extract Date Information ++++++++++++
+0.00
+,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Accelerometer Test
+
+------------------------------------
+Sensor:       ADXL345
+Driver Ver:   1
+Unique ID:    12345
+Max Value:    -156.91 m/s^2
+Min Value:    156.91 m/s^2
+Resolution:   0.04 m/s^2
+------------------------------------
+
+Data Rate:    100  Hz
+Range:         +/- 2  g
+
+
+---------send AT Command:---------
+AT
+
+==========receive AT Command:==========
+AT
+OK
+
+---------send AT Command:---------
+AT+CREG?
+
+==========receive AT Command:==========
+AT+CREG?
++CREG: 0,
+---------send AT Command:---------
+AT+CGCLASS="B"
+
+==========receive AT Command:==========
+1
+
+OK
+
+---------send AT Command:---------
+AT+CGDCONT=1,"IP","3gnet"
+
+==========receive AT Command:==========
+AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
+OK
+---------send AT Command:---------
+AT+CGATT=1
+
+==========receive AT Command:==========
+
+
+OK
+
+---------send AT Command:---------
+AT+CLPORT="TCP","2000"
+
+==========receive AT Command:==========
+AT+CGATT=1AT+CLPORT="TCP","2000"
+OK
+GPRS init ok.
+Setup done!
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144218.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144219.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144220.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144221.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144222.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1442222233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+
+OK
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:42:24 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.16  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144226.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144227.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144228.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7C
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144229.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144230.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1442302233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:42:33 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.24  Y: -1.65  Z: 10.20  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144235.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144236.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144237.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144238.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144239.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7C
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1442392233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:42:41 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.12  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144243.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144244.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144245.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144246.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144247.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1442472233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:42:50 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144251.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144252.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144253.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144254.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144255.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1442552233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:42:58 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.12  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144300.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144301.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144302.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144303.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144304.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1443042233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:43:08 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.20  Y: -1.61  Z: 10.12  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144331.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144332.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144333.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144334.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144335.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1443352233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:43:38 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.24  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144339.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144340.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144341.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144342.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144343.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1443432233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 14:43:46 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.16  Y: -1.61  Z: 10.16  m/s^2 
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144347.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144348.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7B
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144349.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7A
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144350.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 7
+Success to lock GPS satellite, 7
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,144351.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1443512233.816870
+Save_Data.latitude = 2233.816870
+Save_Data.N_S = N11407.188203E
+Save_Data.longitude = 11407.188203E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
