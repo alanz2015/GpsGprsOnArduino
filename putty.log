@@ -1,19 +1,12 @@
-=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2018.08.19 22:42:12 =~=~=~=~=~=~=~=~=~=~=~=
-Accelerometer Test
-+++++++ Extract Date Information ++++++++++++
-0.00
-,,D*75
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2018.08.19 23:09:26 =~=~=~=~=~=~=~=~=~=~=~=
+Success to lock GPS satellite, 14
+,ata ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+,,A*7B
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-,,D*75
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-,,D*75
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
+0.05
 Accelerometer Test
 
 ------------------------------------
@@ -51,10 +44,10 @@ AT+CGCLASS="B"
 OK
 
 ---------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
+AT+CGDCONT=1,"IP","cmnet"
 
 ==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
+AT+CGCLASS="B"AT+CGDCONT=1,"IP","cmnet"
 OK
 ---------send AT Command:---------
 AT+CGATT=1
@@ -72,667 +65,1485 @@ AT+CGATT=1AT+CLPORT="TCP","2000"
 OK
 GPRS init ok.
 Setup done!
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
 Success to lock GPS satellite, 6
 Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144218.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7F
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 6
-Success to lock GPS satellite, 6
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144219.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7E
+$GNRMC,150931.000,V,,,,,0.02,77.13,190818,,,N*65
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
 Success to lock GPS satellite, 6
 Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144220.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 6
-Success to lock GPS satellite, 6
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144221.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+$GNRMC,150932.000,V,,,,,0.03,77.13,190818,,,N*67
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
 Success to lock GPS satellite, 6
 Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144222.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+$GNRMC,150933.000,V,,,,,0.03,77.13,190818,,,N*66
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Save_Data.UTCTime = 1442222233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-
-OK
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- OK
-AT+CIPSEND
->
----------send AT Command:---------
-POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
-==========receive AT Command:==========
- POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
----------send AT Command:---------
-
-==========receive AT Command:==========
-
-SEND OK
-HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:42:24 GMT
-Content-Type: application/json
-Content-Length: 26
-Connection: keep-alive
-Server: Apache-Coyote/1.1
-Pragma: no-cache
-
-{"errno":0,"error":"succ"}
----------send AT Command:---------
-AT+CIPCLOSE
-
-==========receive AT Command:==========
-AT+CIPCLOSE
-CLOSE OK
-
----------send AT Command:---------
-AT+CIPSHUT
-
-==========receive AT Command:==========
-AT+CIPSHUT
-SHUT OK
-GPS DATA is usefull!
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150934.000,V,,,,,0.57,77.13,190818,,,N*60
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.57
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150935.000,V,,,,,0.03,77.13,190818,,,N*60
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Save_Data.UTCTime = 150935
+GPS DATA is NOT usefull!
 1023.00
-X: -0.16  Y: -1.61  Z: 10.08  m/s^2 
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
+X: -0.20  Y: -1.57  Z: 10.12  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
 Success to lock GPS satellite, 6
 Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144226.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
+$GNRMC,150936.000,V,,,,,0.05,77.13,190818,,,N*65
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
 Success to lock GPS satellite, 6
 Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144227.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+$GNRMC,150937.000,V,,,,,0.08,77.13,190818,,,N*69
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
+0.08
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
 Success to lock GPS satellite, 6
 Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144228.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7C
+$GNRMC,150938.000,V,,,,,0.14,77.13,190818,,,N*6B
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+0.14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144229.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7D
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144230.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+$GNRMC,150939.000,V,,,,,0.19,77.13,190818,,,N*67
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Save_Data.UTCTime = 1442302233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- OK
-AT+CIPSEND
->
----------send AT Command:---------
-POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
-==========receive AT Command:==========
- POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
----------send AT Command:---------
-
-==========receive AT Command:==========
-
-SEND OK
-HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:42:33 GMT
-Content-Type: application/json
-Content-Length: 26
-Connection: keep-alive
-Server: Apache-Coyote/1.1
-Pragma: no-cache
-
-{"errno":0,"error":"succ"}
----------send AT Command:---------
-AT+CIPCLOSE
-
-==========receive AT Command:==========
-AT+CIPCLOSE
-CLOSE OK
-
----------send AT Command:---------
-AT+CIPSHUT
-
-==========receive AT Command:==========
-AT+CIPSHUT
-SHUT OK
-GPS DATA is usefull!
-1023.00
-X: -0.24  Y: -1.65  Z: 10.20  m/s^2 
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+0.19
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144235.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
+$GNRMC,150940.000,V,,,,,0.20,77.13,190818,,,N*63
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144236.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144237.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144238.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7D
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144239.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7C
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Save_Data.UTCTime = 1442392233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- OK
-AT+CIPSEND
->
----------send AT Command:---------
-POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
-==========receive AT Command:==========
- POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
----------send AT Command:---------
-
-==========receive AT Command:==========
-
-SEND OK
-HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:42:41 GMT
-Content-Type: application/json
-Content-Length: 26
-Connection: keep-alive
-Server: Apache-Coyote/1.1
-Pragma: no-cache
-
-{"errno":0,"error":"succ"}
----------send AT Command:---------
-AT+CIPCLOSE
-
-==========receive AT Command:==========
-AT+CIPCLOSE
-CLOSE OK
-
----------send AT Command:---------
-AT+CIPSHUT
-
-==========receive AT Command:==========
-AT+CIPSHUT
-SHUT OK
-GPS DATA is usefull!
-1023.00
-X: -0.24  Y: -1.57  Z: 10.12  m/s^2 
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144243.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144244.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144245.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144246.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144247.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Save_Data.UTCTime = 1442472233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- OK
-AT+CIPSEND
->
----------send AT Command:---------
-POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
-==========receive AT Command:==========
- POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
----------send AT Command:---------
-
-==========receive AT Command:==========
-
-SEND OK
-HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:42:50 GMT
-Content-Type: application/json
-Content-Length: 26
-Connection: keep-alive
-Server: Apache-Coyote/1.1
-Pragma: no-cache
-
-{"errno":0,"error":"succ"}
----------send AT Command:---------
-AT+CIPCLOSE
-
-==========receive AT Command:==========
-AT+CIPCLOSE
-CLOSE OK
-
----------send AT Command:---------
-AT+CIPSHUT
-
-==========receive AT Command:==========
-AT+CIPSHUT
-SHUT OK
-GPS DATA is usefull!
+0.20
+Save_Data.UTCTime = 150940
+GPS DATA is NOT usefull!
 1023.00
 X: -0.24  Y: -1.61  Z: 10.08  m/s^2 
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144251.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144252.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
+$GNRMC,150941.000,V,,,,,0.21,77.13,190818,,,N*63
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+0.21
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144253.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144254.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
+$GNRMC,150942.000,V,,,,,0.03,77.13,190818,,,N*60
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144255.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+$GNRMC,150943.000,V,,,,,0.40,77.13,190818,,,N*66
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
-0.00
-Save_Data.UTCTime = 1442552233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- OK
-AT+CIPSEND
->
----------send AT Command:---------
-POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
-==========receive AT Command:==========
- POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
----------send AT Command:---------
-
-==========receive AT Command:==========
-
-SEND OK
-HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:42:58 GMT
-Content-Type: application/json
-Content-Length: 26
-Connection: keep-alive
-Server: Apache-Coyote/1.1
-Pragma: no-cache
-
-{"errno":0,"error":"succ"}
----------send AT Command:---------
-AT+CIPCLOSE
-
-==========receive AT Command:==========
-AT+CIPCLOSE
-CLOSE OK
-
----------send AT Command:---------
-AT+CIPSHUT
-
-==========receive AT Command:==========
-AT+CIPSHUT
-SHUT OK
-GPS DATA is usefull!
+0.40
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150944.000,V,,,,,0.12,77.13,190818,,,N*66
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.12
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150945.000,V,,,,,0.12,77.13,190818,,,N*67
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.12
+Save_Data.UTCTime = 150945
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150946.000,V,,,,,0.06,77.13,190818,,,N*61
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150947.000,V,,,,,0.25,77.13,190818,,,N*61
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.25
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150948.000,V,,,,,0.73,292.12,190818,,,N*55
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.73
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150949.000,V,,,,,0.57,292.12,190818,,,N*52
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.57
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150950.000,V,,,,,0.15,292.12,190818,,,N*5C
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.15
+Save_Data.UTCTime = 150950
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150951.000,V,,,,,0.08,292.12,190818,,,N*51
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.08
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150952.000,V,,,,,0.06,292.12,190818,,,N*5C
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150953.000,V,,,,,0.49,292.12,190818,,,N*56
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.49
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150954.000,V,,,,,0.46,292.12,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.46
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150955.000,V,,,,,0.02,292.12,190818,,,N*5F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Save_Data.UTCTime = 150955
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150956.000,V,,,,,0.01,292.12,190818,,,N*5F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.01
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150957.000,V,,,,,0.03,292.12,190818,,,N*5C
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150958.000,V,,,,,0.49,292.12,190818,,,N*5D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.49
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,150959.000,V,,,,,0.48,292.12,190818,,,N*5D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.48
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151000.000,V,,,,,0.28,292.12,190818,,,N*5F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.28
+Save_Data.UTCTime = 151000
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151001.000,V,,,,,0.03,292.12,190818,,,N*57
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151002.000,V,,,,,0.04,292.12,190818,,,N*53
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.04
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151003.000,V,,,,,0.03,292.12,190818,,,N*55
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151004.000,V,,,,,0.03,292.12,190818,,,N*52
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151005.000,V,,,,,0.03,292.12,190818,,,N*53
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Save_Data.UTCTime = 151005
+GPS DATA is NOT usefull!
+1023.00
+X: -0.20  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151006.000,V,,,,,0.03,292.12,190818,,,N*50
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151007.000,V,,,,,0.03,292.12,190818,,,N*51
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151008.000,V,,,,,0.03,292.12,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151009.000,V,,,,,0.02,292.12,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151010.000,V,,,,,0.02,292.12,190818,,,N*56
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Save_Data.UTCTime = 151010
+GPS DATA is NOT usefull!
+1023.00
+X: -0.20  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151011.000,V,,,,,0.01,292.12,190818,,,N*54
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.01
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151012.000,V,,,,,0.02,292.12,190818,,,N*54
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151013.000,V,,,,,0.02,292.12,190818,,,N*55
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151014.000,V,,,,,0.02,292.12,190818,,,N*52
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151015.000,V,,,,,0.02,292.12,190818,,,N*53
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Save_Data.UTCTime = 151015
+GPS DATA is NOT usefull!
+1023.00
+X: -0.20  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151016.000,V,,,,,0.02,292.12,190818,,,N*50
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151017.000,V,,,,,0.02,292.12,190818,,,N*51
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151018.000,V,,,,,0.02,292.12,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151019.000,V,,,,,0.02,292.12,190818,,,N*5F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151020.000,V,,,,,0.02,292.12,190818,,,N*55
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Save_Data.UTCTime = 151020
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151021.000,V,,,,,0.02,292.12,190818,,,N*54
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151022.000,V,,,,,0.02,292.12,190818,,,N*57
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151023.000,V,,,,,0.02,292.12,190818,,,N*56
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151024.000,V,,,,,0.05,292.12,190818,,,N*56
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151025.000,V,,,,,0.05,292.12,190818,,,N*57
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Save_Data.UTCTime = 151025
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.53  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151026.000,V,,,,,0.05,292.12,190818,,,N*54
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151027.000,V,,,,,0.05,292.12,190818,,,N*55
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151028.000,V,,,,,2.09,221.26,190818,,,N*5B
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+2.09
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151029.000,V,,,,,0.31,221.26,190818,,,N*53
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.31
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151030.000,V,,,,,0.04,221.26,190818,,,N*5D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.04
+Save_Data.UTCTime = 151030
+GPS DATA is NOT usefull!
 1023.00
 X: -0.24  Y: -1.61  Z: 10.12  m/s^2 
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144300.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
+$GNRMC,151031.000,V,,,,,0.06,221.26,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151032.000,V,,,,,0.05,221.26,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151033.000,V,,,,,0.08,221.26,190818,,,N*52
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.08
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151034.000,V,,,,,0.07,221.26,190818,,,N*5A
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.07
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151035.000,V,,,,,0.06,221.26,190818,,,N*5A
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Save_Data.UTCTime = 151035
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151036.000,V,,,,,0.06,221.26,190818,,,N*59
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151037.000,V,,,,,0.06,221.26,190818,,,N*58
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151038.000,V,,,,,0.05,221.26,190818,,,N*54
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151039.000,V,,,,,0.04,221.26,190818,,,N*54
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.04
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151040.000,V,,,,,0.03,221.26,190818,,,N*5D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Save_Data.UTCTime = 151040
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151041.000,V,,,,,0.04,221.26,190818,,,N*5B
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.04
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151042.000,V,,,,,0.02,221.26,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.02
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151043.000,V,,,,,0.03,221.26,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.03
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151044.000,V,,,,,0.04,221.26,190818,,,N*5E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.04
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151045.000,V,,,,,0.04,221.26,190818,,,N*5F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.04
+Save_Data.UTCTime = 151045
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151046.000,V,,,,,0.05,221.26,190818,,,N*5D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151047.000,V,,,,,0.06,221.26,190818,,,N*5F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151048.000,V,,,,,0.76,51.10,190818,,,N*67F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.76
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151049.000,V,,,,,0.17,51.10,190818,,,N*61F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.17
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151050.000,V,,,,,0.19,51.10,190818,,,N*67F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.19
+Save_Data.UTCTime = 151050
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.12  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151051.000,V,,,,,0.14,51.10,190818,,,N*6BF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151052.000,V,,,,,0.42,51.10,190818,,,N*6BF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.42
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151053.000,V,,,,,0.10,51.10,190818,,,N*6DF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.10
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151054.000,V,,,,,0.29,51.10,190818,,,N*60F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.29
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151055.000,V,,,,,0.29,51.10,190818,,,N*61F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.29
+Save_Data.UTCTime = 151055
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.12  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151056.000,V,,,,,0.23,51.10,190818,,,N*68F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.23
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151057.000,V,,,,,0.05,51.10,190818,,,N*6DF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.05
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151058.000,V,,,,,0.06,51.10,190818,,,N*61F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151059.000,V,,,,,0.10,51.10,190818,,,N*67F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.10
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151100.000,V,,,,,0.55,51.10,190818,,,N*6BF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.55
+Save_Data.UTCTime = 151100
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151101.000,V,,,,,0.13,51.10,190818,,,N*68F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.13
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151102.000,V,,,,,0.15,51.10,190818,,,N*6DF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.15
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151103.000,V,,,,,0.22,51.10,190818,,,N*68F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.22
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151104.000,V,,,,,0.14,51.10,190818,,,N*6AF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151105.000,V,,,,,0.14,51.10,190818,,,N*6BF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.14
+Save_Data.UTCTime = 151105
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151106.000,V,,,,,0.09,51.10,190818,,,N*64F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.09
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151107.000,V,,,,,0.11,51.10,190818,,,N*6CF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.11
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151108.000,V,,,,,0.09,51.10,190818,,,N*6AF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.09
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151109.000,V,,,,,0.30,51.10,190818,,,N*61F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.30
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151110.000,V,,,,,0.53,51.10,190818,,,N*6CF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.53
+Save_Data.UTCTime = 151110
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.65  Z: 10.12  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151111.000,V,,,,,0.33,51.10,190818,,,N*6BF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.33
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151112.000,V,,,,,0.14,51.10,190818,,,N*6DF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151113.000,V,,,,,0.36,51.10,190818,,,N*6CF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.36
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151114.000,V,,,,,0.06,51.10,190818,,,N*68F
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.06
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151115.000,V,,,,,0.31,51.10,190818,,,N*6DF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.31
+Save_Data.UTCTime = 151115
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151116.000,V,,,,,0.31,51.10,190818,,,N*6EF
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.31
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151117.000,V,,,,,0.60,145.62,190818,,,N*5A
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.60
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151118.000,V,,,,,0.27,145.62,190818,,,N*56
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.27
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151119.000,V,,,,,0.08,145.62,190818,,,N*5A
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.08
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151120.000,V,,,,,0.08,145.62,190818,,,N*50
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.08
+Save_Data.UTCTime = 151120
+GPS DATA is NOT usefull!
+1023.00
+X: -0.24  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151121.000,A,2233.805374,N,11407.176744,E,0.00,145.62,190818,,,A*73
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144301.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144302.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
+$GNRMC,151122.000,A,2233.805207,N,11407.176668,E,0.00,145.62,190818,,,A*7A
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144303.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144304.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+$GNRMC,151123.000,A,2233.804723,N,11407.176538,E,0.00,242.69,190818,,,A*70
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
-Save_Data.UTCTime = 1443042233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151124.000,A,2233.804723,N,11407.176538,E,0.00,242.69,190818,,,A*77
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151125.000,A,2233.804044,N,11407.176950,E,0.63,196.59,190818,,,A*7E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.63
+Save_Data.UTCTime = 1511252233.804044
+Save_Data.latitude = 2233.804044
+Save_Data.N_S = N11407.176950E
+Save_Data.longitude = 11407.176950E
+Save_Data.E_W = E
+
+---------send AT Command:---------
+AT+CIPSTART="TCP","api.heclouds.com",80
+
+==========receive AT Command:==========
+
+OK
+AT+CIPSTART="TCP","api.heclouds.com",80
+OK
+
+CONNECT
+---------send AT Command:---------
+AT+CIPSEND
+
+==========receive AT Command:==========
+ OK
+AT+CIPSEND
+>
+---------send AT Command:---------
+POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119610,"lat":22.563400}}]}]}
+==========receive AT Command:==========
+ POST /devices/31027885/datapoints HTTP/1.1
+api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
+Host:api.heclouds.com
+Content-Length:95
+
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119610,"lat":22.563400}}]}]}
+---------send AT Command:---------
+
+==========receive AT Command:==========
+
+SEND OK
+HTTP/1.1 200 OK
+Date: Sun, 19 Aug 2018 15:11:29 GMT
+Content-Type: application/json
+Content-Length: 26
+Connection: keep-alive
+Server: Apache-Coyote/1.1
+Pragma: no-cache
+
+{"errno":0,"error":"succ"}
+---------send AT Command:---------
+AT+CIPCLOSE
+
+==========receive AT Command:==========
+AT+CIPCLOSE
+CLOSE OK
+
+---------send AT Command:---------
+AT+CIPSHUT
+
+==========receive AT Command:==========
+AT+CIPSHUT
+SHUT OK
+GPS DATA is usefull!
+1023.00
+X: -0.20  Y: -1.61  Z: 10.08  m/s^2 
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151131.000,A,2233.805668,N,11407.177880,E,0.64,349.66,190818,,,A*74
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.64
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151132.000,A,2233.806162,N,11407.178003,E,0.87,356.82,190818,,,A*7C
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.87
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151133.000,A,2233.806778,N,11407.177737,E,1.07,350.93,190818,,,A*70
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+1.07
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151134.000,A,2233.806097,N,11407.177345,E,0.81,343.50,190818,,,A*72
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.81
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 14
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151135.000,A,2233.800704,N,11407.176924,E,0.00,343.50,190818,,,A*7D
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1511352233.800704
+Save_Data.latitude = 2233.800704
+Save_Data.N_S = N11407.176924E
+Save_Data.longitude = 11407.176924E
 Save_Data.E_W = E
 
 ---------send AT Command:---------
@@ -756,21 +1567,21 @@ api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
 Host:api.heclouds.com
 Content-Length:95
 
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119610,"lat":22.563341}}]}]}
 ==========receive AT Command:==========
  POST /devices/31027885/datapoints HTTP/1.1
 api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
 Host:api.heclouds.com
 Content-Length:95
 
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119610,"lat":22.563341}}]}]}
 ---------send AT Command:---------
 
 ==========receive AT Command:==========
 
 SEND OK
 HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:43:08 GMT
+Date: Sun, 19 Aug 2018 15:11:38 GMT
 Content-Type: application/json
 Content-Length: 26
 Connection: keep-alive
@@ -793,26 +1604,15 @@ AT+CIPSHUT
 SHUT OK
 GPS DATA is usefull!
 1023.00
-X: -0.20  Y: -1.61  Z: 10.12  m/s^2 
+X: -0.24  Y: -1.57  Z: 10.08  m/s^2 
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144331.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*75
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144332.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*76
+$GNRMC,151140.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*7A
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
@@ -820,21 +1620,10 @@ Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144333.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*77
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144334.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
+$GNRMC,151141.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*7B
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
@@ -842,17 +1631,39 @@ Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144335.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
+$GNRMC,151142.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*78
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
-Save_Data.UTCTime = 1443352233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151143.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*79
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 15
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
+----------------- Extracted GPS RMC Data ---------------------
+$GNRMC,151144.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*7E
+----------------- Extracted GPS RMC Data ---------------------
+++++++++++ Extract Date Information ++++++++++++
+0.00
+Save_Data.UTCTime = 1511442233.801191
+Save_Data.latitude = 2233.801191
+Save_Data.N_S = N11407.177066E
+Save_Data.longitude = 11407.177066E
 Save_Data.E_W = E
 
 ---------send AT Command:---------
@@ -876,21 +1687,21 @@ api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
 Host:api.heclouds.com
 Content-Length:95
 
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119610,"lat":22.563349}}]}]}
 ==========receive AT Command:==========
  POST /devices/31027885/datapoints HTTP/1.1
 api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
 Host:api.heclouds.com
 Content-Length:95
 
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
+{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119610,"lat":22.563349}}]}]}
 ---------send AT Command:---------
 
 ==========receive AT Command:==========
 
 SEND OK
 HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:43:38 GMT
+Date: Sun, 19 Aug 2018 15:11:48 GMT
 Content-Type: application/json
 Content-Length: 26
 Connection: keep-alive
@@ -913,26 +1724,15 @@ AT+CIPSHUT
 SHUT OK
 GPS DATA is usefull!
 1023.00
-X: -0.24  Y: -1.61  Z: 10.24  m/s^2 
+X: -0.20  Y: -1.57  Z: 10.08  m/s^2 
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144339.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7D
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144340.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+$GNRMC,151150.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*7B
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
@@ -940,21 +1740,10 @@ Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144341.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144342.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*71
+$GNRMC,151151.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*7A
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
@@ -962,83 +1751,10 @@ Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144343.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*70
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Save_Data.UTCTime = 1443432233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- OK
-AT+CIPSEND
->
----------send AT Command:---------
-POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
-==========receive AT Command:==========
- POST /devices/31027885/datapoints HTTP/1.1
-api-key:rLhsBYEcRfk6BBAwcpNHKIZ199Y=
-Host:api.heclouds.com
-Content-Length:95
-
-{"datastreams":[{"id":"location","datapoints":[{"value":{"lon":114.119800,"lat":22.563610}}]}]}
----------send AT Command:---------
-
-==========receive AT Command:==========
-
-SEND OK
-HTTP/1.1 200 OK
-Date: Sun, 19 Aug 2018 14:43:46 GMT
-Content-Type: application/json
-Content-Length: 26
-Connection: keep-alive
-Server: Apache-Coyote/1.1
-Pragma: no-cache
-
-{"errno":0,"error":"succ"}
----------send AT Command:---------
-AT+CIPCLOSE
-
-==========receive AT Command:==========
-AT+CIPCLOSE
-CLOSE OK
-
----------send AT Command:---------
-AT+CIPSHUT
-
-==========receive AT Command:==========
-AT+CIPSHUT
-SHUT OK
-GPS DATA is usefull!
-1023.00
-X: -0.16  Y: -1.61  Z: 10.16  m/s^2 
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144347.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*74
+$GNRMC,151152.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*79
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
@@ -1046,21 +1762,10 @@ Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144348.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7B
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144349.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*7A
+$GNRMC,151153.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*78
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
@@ -1068,28 +1773,17 @@ Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
 Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
+Success to lock GPS satellite, 6
+Success to lock GPS satellite, 6
 ----------------- Extracted GPS RMC Data ---------------------
-$GNRMC,144350.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*72
------------------ Extracted GPS RMC Data ---------------------
-++++++++++ Extract Date Information ++++++++++++
-0.00
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 15
-Success to lock GPS satellite, 7
-Success to lock GPS satellite, 7
------------------ Extracted GPS RMC Data ---------------------
-$GNRMC,144351.000,A,2233.816870,N,11407.188203,E,0.00,166.92,190818,,,D*73
+$GNRMC,151154.000,A,2233.801191,N,11407.177066,E,0.00,343.50,190818,,,A*7F
 ----------------- Extracted GPS RMC Data ---------------------
 ++++++++++ Extract Date Information ++++++++++++
 0.00
-Save_Data.UTCTime = 1443512233.816870
-Save_Data.latitude = 2233.816870
-Save_Data.N_S = N11407.188203E
-Save_Data.longitude = 11407.188203E
+Save_Data.UTCTime = 1511542233.801191
+Save_Data.latitude = 2233.801191
+Save_Data.N_S = N11407.177066E
+Save_Data.longitude = 11407.177066E
 Save_Data.E_W = E
 
 ---------send AT Command:---------
