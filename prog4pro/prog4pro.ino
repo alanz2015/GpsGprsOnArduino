@@ -243,6 +243,7 @@ void setup() {
 }
 
 void loop() {
+  int retVal = 0;
   /* Get a new sensor event */ 
   sensors_event_t event; 
   /* Analog input from water level sensor */
@@ -252,7 +253,9 @@ void loop() {
 	while (Time_Cont2 < 5000)	//5s内不停读取GPS
 	{
 		gpsRead();  //获取GPS数据
-		parseGpsBuffer();//解析GPS数据		
+		retVal = parseGpsBuffer();//解析GPS数据		
+    // if (retVal == 0)
+    //  break;  // exit from while loop, no need to read 5 times
 	}
 
 	printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
@@ -269,6 +272,9 @@ void loop() {
   DebugSerial.print("X: "); DebugSerial.print(event.acceleration.x); DebugSerial.print("  ");
   DebugSerial.print("Y: "); DebugSerial.print(event.acceleration.y); DebugSerial.print("  ");
   DebugSerial.print("Z: "); DebugSerial.print(event.acceleration.z); DebugSerial.print("  ");DebugSerial.println("m/s^2 ");
+  #endif
+  #if 0
+  delay(15000);
   #endif
 }
 
@@ -365,7 +371,7 @@ void printGpsBuffer()
 	}
 }
 
-void parseGpsBuffer()
+int parseGpsBuffer()
 {
 	char *subString;
 	char *subStringNext;
@@ -374,6 +380,7 @@ void parseGpsBuffer()
 	if (Save_Data.isGetData)
 	{
 		Save_Data.isGetData = false;
+    Save_Data.isUsefull = false;
 
     #if 1
     subString = &Save_Data.GPS_Buffer[7]; // Override "$GPRMC,"
@@ -383,6 +390,8 @@ void parseGpsBuffer()
       memset(localString, 0, sizeof(localString));
       memcpy(localString, subString, (subStringNext - subString));
       memcpy(Save_Data.UTCTime, localString, sizeof(Save_Data.UTCTime));
+      DebugSerial.print("Extracted UTCTime: ");
+      DebugSerial.println(Save_Data.UTCTime);
 
       subString = subStringNext + 1;
       subStringNext = strstr(subString, ",");
@@ -394,8 +403,11 @@ void parseGpsBuffer()
           Save_Data.isUsefull = true;
         else if (localString[0] == 'V')
           Save_Data.isUsefull = false;
-        else
+        else {
+          Save_Data.isUsefull = false;
           DebugSerial.println("Error Active/Valid indication.");
+          return -3;
+        }
 
         subString = subStringNext + 1;
         subStringNext = strstr(subString, ",");
@@ -433,9 +445,12 @@ void parseGpsBuffer()
                   memset(localString, 0, sizeof(localString));
                   memcpy(localString, subString, (subStringNext - subString));
                   memcpy(Save_Data.UTCDate, localString, sizeof(Save_Data.UTCDate));
+                  #if 0
                   DebugSerial.println("++++++++++ Extract Date Information ++++++++++++");
                   DebugSerial.println(Save_Data.UTCDate);
+                  #endif
                   Save_Data.isParseData = true;
+                  return 0;
                 }
               }
             }
@@ -445,9 +460,10 @@ void parseGpsBuffer()
     }
     else {
       errorLog(12);  //解析错误
-      return;
+      return -1;
     }
     #endif
+    return -2;
 	}
 }
 
@@ -513,9 +529,9 @@ void gpsRead() {
 					memcpy(Save_Data.GPS_Buffer, GPS_BufferHead, GPS_BufferTail - GPS_BufferHead);
 					Save_Data.isGetData = true;
           #if 1
-          DebugSerial.println("----------------- Extracted GPS RMC Data ---------------------");
+          DebugSerial.println("----------------- Received GPS RMC Raw Data ----------------------");
           DebugSerial.println(Save_Data.GPS_Buffer);
-          DebugSerial.println("----------------- Extracted GPS RMC Data ---------------------");
+          DebugSerial.println("----------------- End of GPS RMC Raw Data ------------------------");
           #endif
 				}
 
