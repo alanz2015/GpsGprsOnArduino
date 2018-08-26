@@ -32,11 +32,11 @@ struct
 	char GPS_Buffer[80];
 	bool isGetData;   //是否获取到GPS数据
 	bool isParseData; //是否解析完成
-	char UTCTime[6];   //UTC时间
-	char latitude[12];    //纬度
-	char N_S[1];    //N/S
-	char longitude[12];   //经度
-	char E_W[1];    //E/W
+	char UTCTime[10];   //UTC时间
+	char latitude[20];    //纬度
+	char N_S;    //N/S
+	char longitude[20];   //经度
+	char E_W;    //E/W
 	bool isUsefull;   //定位信息是否有效
   char UTCDate[12]; // Date information
 } Save_Data;
@@ -53,13 +53,13 @@ unsigned int gpsRxCount = 0;
 
 int L = 13; //LED指示灯引脚
 
-int redLED = 31;
-int yellowLED = 33;
-int greenLED = 35;
+int yellowLED = 31;
+int greenLED = 33;
+int redLED = 35;
 int waterLevelPin = 12;  // Water level sensor data
 
-unsigned long  Time_Cont = 0;       //定时器计数器
-unsigned long  Time_Cont2 = 0;       //定时器计数器
+volatile unsigned long  Time_Cont = 0;       // for GPRS Timeout Counter
+volatile unsigned long  Time_Cont2 = 0;       // for GPS Timeout Counter
 
 const unsigned int gprsRxBufferLength = 600;
 char gprsRxBuffer[gprsRxBufferLength];
@@ -190,7 +190,7 @@ void setup() {
   digitalWrite(yellowLED, HIGH);
   digitalWrite(greenLED, HIGH);
 
-  delay(3000);
+  delay(1000);
   digitalWrite(redLED, LOW);
   digitalWrite(yellowLED, LOW);
   digitalWrite(greenLED, LOW);
@@ -239,6 +239,11 @@ void setup() {
 	Timer1.initialize(1000);
 	Timer1.attachInterrupt(Timer1_handler);
 	initGprs();
+
+  digitalWrite(greenLED, HIGH);
+  delay(2000);
+  digitalWrite(greenLED, LOW);
+  
 	DebugSerial.println("\r\nSetup done!");
 }
 
@@ -250,15 +255,27 @@ void loop() {
   float waterLevel = 0.0;
   
 	Time_Cont2 = 0;
-	while (Time_Cont2 < 5000)	//5s内不停读取GPS
+
+  // Check GPS signal quality
+  while ((retVal = gpsRead()) < 0) {
+    //获取GPS数据
+    digitalWrite(redLED, HIGH);
+    digitalWrite(yellowLED, HIGH);
+    delay(5000);
+  }
+  DebugSerial.println("Detect GPS signal");
+  digitalWrite(redLED, LOW);
+  digitalWrite(yellowLED, LOW);
+	
+	while (Time_Cont2 < 5)	//5s内不停读取GPS
 	{
-		gpsRead();  //获取GPS数据
+		retVal = gpsRead();  //获取GPS数据
 		retVal = parseGpsBuffer();//解析GPS数据		
-    // if (retVal == 0)
-    //  break;  // exit from while loop, no need to read 5 times
+    if (retVal == 0)
+      break;
 	}
 
-	printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
+  printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
 
   waterLevel = analogRead(waterLevelPin);
   
@@ -272,9 +289,6 @@ void loop() {
   DebugSerial.print("X: "); DebugSerial.print(event.acceleration.x); DebugSerial.print("  ");
   DebugSerial.print("Y: "); DebugSerial.print(event.acceleration.y); DebugSerial.print("  ");
   DebugSerial.print("Z: "); DebugSerial.print(event.acceleration.z); DebugSerial.print("  ");DebugSerial.println("m/s^2 ");
-  #endif
-  #if 0
-  delay(15000);
   #endif
 }
 
@@ -343,7 +357,8 @@ void printGpsBuffer()
 	if (Save_Data.isParseData)
 	{
 		Save_Data.isParseData = false;
-
+    DebugSerial.print("Save_Data.UTCDate = ");
+    DebugSerial.println(Save_Data.UTCDate);
 		DebugSerial.print("Save_Data.UTCTime = ");
 		DebugSerial.println(Save_Data.UTCTime);
 
@@ -358,7 +373,7 @@ void printGpsBuffer()
 			DebugSerial.println(Save_Data.longitude);
 			DebugSerial.print("Save_Data.E_W = ");
 			DebugSerial.println(Save_Data.E_W);
-      #if 1
+      #if 0
 			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude);
       #endif
       DebugSerial.println("GPS DATA is usefull!");
@@ -366,6 +381,7 @@ void printGpsBuffer()
 		else
 		{
 			DebugSerial.println("GPS DATA is NOT usefull!");
+      
 		}
 
 	}
@@ -388,12 +404,21 @@ int parseGpsBuffer()
     if (subStringNext != NULL) {
       // Extract UTC Time hhmmss:xxx
       memset(localString, 0, sizeof(localString));
+      memset(Save_Data.UTCTime, 0, sizeof(Save_Data.UTCTime));
       memcpy(localString, subString, (subStringNext - subString));
-      memcpy(Save_Data.UTCTime, localString, sizeof(Save_Data.UTCTime));
+      memcpy(Save_Data.UTCTime, localString, 6);
+      
+      #if 0
+      DebugSerial.print("Index Nb: ");
+      DebugSerial.println(subStringNext - subString);
       DebugSerial.print("Extracted UTCTime: ");
       DebugSerial.println(Save_Data.UTCTime);
-
-      subString = subStringNext + 1;
+      DebugSerial.println(subString);
+      DebugSerial.println(subStringNext);
+      DebugSerial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      #endif
+      
+      subString = subStringNext + 1;  // Go ahead to the left string clip with overriding ','
       subStringNext = strstr(subString, ",");
       if (subStringNext != NULL) {
         // Extract message validation symbol
@@ -415,11 +440,10 @@ int parseGpsBuffer()
           // Extract Latitude
           memset(localString, 0, sizeof(localString));
           memcpy(localString, subString, (subStringNext - subString));
-          memcpy(Save_Data.latitude, localString, sizeof(Save_Data.latitude));
+          memcpy(Save_Data.latitude, localString, sizeof(localString));
 
           subString = subStringNext + 1;
-          memset(Save_Data.N_S, 0, sizeof(Save_Data.N_S));
-          memcpy(Save_Data.N_S, subString, sizeof(Save_Data.N_S));
+          Save_Data.N_S = subString[0];
 
           subStringNext = strstr(subString, ",");
           if (subStringNext != NULL) {
@@ -429,28 +453,43 @@ int parseGpsBuffer()
               // Extract longitude
               memset(localString, 0, sizeof(localString));
               memcpy(localString, subString, (subStringNext - subString));
-              memcpy(Save_Data.longitude, localString, sizeof(Save_Data.longitude));
+              memcpy(Save_Data.longitude, localString, sizeof(localString));
 
               subString = subStringNext + 1;
-              memset(Save_Data.E_W, 0, sizeof(Save_Data.E_W));
-              memcpy(Save_Data.E_W, subString, sizeof(Save_Data.E_W));
-
+              Save_Data.E_W = subString[0];
+              
+              #if 0
+              DebugSerial.println(Save_Data.N_S);
+              DebugSerial.println(Save_Data.E_W);
+              DebugSerial.println(Save_Data.longitude);
+              DebugSerial.println(Save_Data.latitude);
+              DebugSerial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+              #endif
+              
               subStringNext = strstr(subString, ",");
               if (subStringNext != NULL) {
                 // Override ground speed field
                 subString = subStringNext + 1;
                 subStringNext = strstr(subString, ",");
                 if (subStringNext != NULL) {
-                  // Extract ddmmyy
-                  memset(localString, 0, sizeof(localString));
-                  memcpy(localString, subString, (subStringNext - subString));
-                  memcpy(Save_Data.UTCDate, localString, sizeof(Save_Data.UTCDate));
-                  #if 0
-                  DebugSerial.println("++++++++++ Extract Date Information ++++++++++++");
-                  DebugSerial.println(Save_Data.UTCDate);
-                  #endif
-                  Save_Data.isParseData = true;
-                  return 0;
+                  subString = subStringNext + 1;
+                  subStringNext = strstr(subString, ",");
+                  if (subStringNext != NULL) {
+                    subString = subStringNext + 1;
+                    subStringNext = strstr(subString, ",");
+                    memset(localString, 0, sizeof(localString));
+                    memcpy(localString, subString, (subStringNext - subString));
+                    memcpy(Save_Data.UTCDate, localString, sizeof(localString));
+
+                    #if 0
+                    DebugSerial.println("++++++++++ Extract Date Information ++++++++++++");
+                    DebugSerial.println(subString);
+                    DebugSerial.println(Save_Data.UTCDate);
+                    #endif
+                    
+                    Save_Data.isParseData = true;
+                    return 0;
+                  }
                 }
               }
             }
@@ -475,7 +514,7 @@ int parseGpsBuffer()
 // 定位模式（M－手動，強制二維或三維定位；A－自動，自動二維或三維定位）、定位中使用的衛星ID號、PDOP值、HDOP值、VDOP值
 //
 
-void gpsRead() {
+int gpsRead() {
   char *subString;
   char *subStringNext;
   char checkSatNb[4];
@@ -488,12 +527,6 @@ void gpsRead() {
 		{
 			char* GPS_BufferHead;
 			char* GPS_BufferTail;
-
-      #if 0
-      DebugSerial.println("Received GPS data from serial port:");
-      DebugSerial.print(gpsRxBuffer);
-      DebugSerial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-      #endif
 
       /*
        * First parse xxGSV to understand how many satellites can be watched.
@@ -509,9 +542,10 @@ void gpsRead() {
             memset(checkSatNb, 0, sizeof(checkSatNb));
             memcpy(checkSatNb, subString, 2);
             nbSat = atoi(checkSatNb);
-            if (nbSat < 3) {
+            if (nbSat < 5) {
               DebugSerial.print("Fail to locate satellite, ");
               DebugSerial.println(nbSat);
+              return -1;
             }
             else {
               DebugSerial.print("Success to lock GPS satellite, ");
@@ -541,6 +575,7 @@ void gpsRead() {
 		if (gpsRxCount == gpsRxBufferLength)
 		  clrGpsRxBuffer();
 	}
+  return 0;
 }
 
 void clrGpsRxBuffer(void)
