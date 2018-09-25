@@ -278,6 +278,21 @@ void loop() {
   printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
 
   waterLevel = analogRead(waterLevelPin);
+  if (waterLevel <= 2023.00) {
+       digitalWrite(greenLED, HIGH);
+  }
+  else {
+    if (2023.00 < waterLevel <= 4023.00) {
+      digitalWrite(greeLED, LOW);
+      digitalWrite(yellowLED, HIGH);
+    }
+    else {
+      if (waterLevel > 4023.00) {
+        digitalWrite(yellowLED, LOW);
+        digitalWrite(redLED, HIGH);
+      }
+    }
+  }
   
   #if 1
   DebugSerial.println(waterLevel);
@@ -288,7 +303,8 @@ void loop() {
   /* Display the results (acceleration is measured in m/s^2) */
   DebugSerial.print("X: "); DebugSerial.print(event.acceleration.x); DebugSerial.print("  ");
   DebugSerial.print("Y: "); DebugSerial.print(event.acceleration.y); DebugSerial.print("  ");
-  DebugSerial.print("Z: "); DebugSerial.print(event.acceleration.z); DebugSerial.print("  ");DebugSerial.println("m/s^2 ");
+  DebugSerial.print("Z: "); DebugSerial.print(event.acceleration.z); DebugSerial.print("  ");
+  DebugSerial.println("m/s^2 ");
   #endif
 }
 
@@ -300,9 +316,7 @@ void postDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* sensor_i
 
 	char value_str[15] = {0};
 
-
 	dtostrf(data_value, 3, 2, value_str); //转换成字符串输出
-
 
 	//连接服务器
 	memset(send_buf, 0, 400);    //清空
