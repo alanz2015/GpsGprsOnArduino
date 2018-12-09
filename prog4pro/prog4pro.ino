@@ -51,8 +51,8 @@ unsigned int gpsRxCount = 0;
 #define Success 1U
 #define Failure 0U
 
-int L = 13; //LED指示灯引脚
-
+int L = 13; // LED指示灯引脚
+int curLightLED = 0;
 int yellowLED = 31;
 int greenLED = 33;
 int redLED = 35;
@@ -69,7 +69,7 @@ char OneNetServer[] = "api.heclouds.com";       //不需要修改
 
 char device_id[] = "31027885";    //修改为自己的设备ID
 char API_KEY[] = "rLhsBYEcRfk6BBAwcpNHKIZ199Y=";    //修改为自己的API_KEY
-char sensor_gps[] = "location";
+char sensor_gps[] = "Location";
 char sensor_level[] = "Level";  // Water level
 
 void displaySensorDetails(void)
@@ -186,11 +186,17 @@ void setup() {
   pinMode(yellowLED, OUTPUT);
   pinMode(greenLED, OUTPUT);
 
+  /*
+   * Set LED control pins to HIGH will make LEDs to flickering automatically by itself.
+   */
   digitalWrite(redLED, HIGH);
   digitalWrite(yellowLED, HIGH);
   digitalWrite(greenLED, HIGH);
 
   delay(1000);
+  /*
+   * Set LED control pins to LOW will make LEDs light off.
+   */
   digitalWrite(redLED, LOW);
   digitalWrite(yellowLED, LOW);
   digitalWrite(greenLED, LOW);
@@ -261,9 +267,10 @@ void loop() {
     //获取GPS数据
     digitalWrite(redLED, HIGH);
     digitalWrite(yellowLED, HIGH);
+    digitalWrite(greenLED, LOW);
     delay(5000);
   }
-  DebugSerial.println("Detect GPS signal");
+  DebugSerial.println("GPS signal quality is OK!!!");
   digitalWrite(redLED, LOW);
   digitalWrite(yellowLED, LOW);
 	
@@ -272,30 +279,45 @@ void loop() {
 		retVal = gpsRead();  //获取GPS数据
 		retVal = parseGpsBuffer();//解析GPS数据		
     if (retVal == 0)
-      break;
+      Time_Cont2 = 10;  // Exit from this read GPS loop
 	}
 
   printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
 
   waterLevel = analogRead(waterLevelPin);
   if (waterLevel <= 2023.00) {
-       digitalWrite(greenLED, HIGH);
+       if (curLightLED != 1) {
+         digitalWrite(greenLED, HIGH);
+         digitalWrite(yellowLED, LOW);
+         digitalWrite(redLED, LOW);
+         curLightLED = 1; // 1 stands for GREEN LED
+       }
   }
   else {
     if (2023.00 < waterLevel <= 4023.00) {
-      digitalWrite(greeLED, LOW);
-      digitalWrite(yellowLED, HIGH);
+      if (curLightLED != 2) {
+         digitalWrite(greenLED, LOW);
+         digitalWrite(yellowLED, HIGH);
+         digitalWrite(redLED, LOW);
+         curLightLED = 2; // 2 stands for YELLOW LED
+      }
     }
     else {
       if (waterLevel > 4023.00) {
-        digitalWrite(yellowLED, LOW);
-        digitalWrite(redLED, HIGH);
+        if (curLightLED != 3) {
+           digitalWrite(yellowLED, LOW);
+           digitalWrite(redLED, HIGH);
+           digitalWrite(greenLED, LOW);
+           curLightLED = 3; // 3 stands for RED LED
+        }
       }
     }
   }
   
   #if 1
-  DebugSerial.println(waterLevel);
+  DebugSerial.print("Measured Water Level: ");
+  DebugSerial.print((waterLevel - 1023.00));
+  DebugSerial.println(" cm");
   #endif
   
   #if 1
@@ -387,7 +409,10 @@ void printGpsBuffer()
 			DebugSerial.println(Save_Data.longitude);
 			DebugSerial.print("Save_Data.E_W = ");
 			DebugSerial.println(Save_Data.E_W);
-      #if 0
+      #if 1
+      /*
+       * Upload the field sampling water level data to CMCC OneNet IoT platform
+       */
 			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude);
       #endif
       DebugSerial.println("GPS DATA is usefull!");
