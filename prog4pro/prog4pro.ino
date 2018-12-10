@@ -357,6 +357,7 @@ void printGpsBuffer()
        * Upload the field sampling water level data to CMCC OneNet IoT platform
        */
 			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude, waterLevel);
+      delay(5000);
       postGpsDataToOneNet(API_KEY, device_id, sensor_level, Save_Data.longitude, Save_Data.latitude, waterLevel);
       #endif
       DebugSerial.println("GPS DATA is usefull!");
