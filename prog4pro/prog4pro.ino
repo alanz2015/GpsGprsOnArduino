@@ -271,7 +271,7 @@ void loop() {
     delay(5000);
   }
   
-  DebugSerial.println("GPS signal quality is OK!!!");
+  // DebugSerial.println("GPS signal quality is OK!!!");
   digitalWrite(redLED, LOW);
   digitalWrite(yellowLED, LOW);
 	
@@ -313,7 +313,7 @@ void loop() {
     }
   }
   
-  #if 1
+  #if 0
   DebugSerial.print("Measured Water Level: ");
   DebugSerial.print((waterLevel - 1023.00));
   DebugSerial.println(" cm");
@@ -321,8 +321,8 @@ void loop() {
 
   printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
   
-  #if 1
   accel.getEvent(&event);
+  #if 0
   /* Display the results (acceleration is measured in m/s^2) */
   DebugSerial.print("X: "); DebugSerial.print(event.acceleration.x); DebugSerial.print("  ");
   DebugSerial.print("Y: "); DebugSerial.print(event.acceleration.y); DebugSerial.print("  ");
@@ -357,10 +357,10 @@ void printGpsBuffer()
        * Upload the field sampling water level data to CMCC OneNet IoT platform
        */
 			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude, waterLevel);
-      delay(5000);
+      delay(1000);
       postGpsDataToOneNet(API_KEY, device_id, sensor_level, Save_Data.longitude, Save_Data.latitude, waterLevel);
       #endif
-      DebugSerial.println("GPS DATA is usefull!");
+      // DebugSerial.println("GPS DATA is usefull!");
 		}
 		else
 		{
@@ -546,7 +546,7 @@ int gpsRead() {
 				{
 					memcpy(Save_Data.GPS_Buffer, GPS_BufferHead, GPS_BufferTail - GPS_BufferHead);
 					Save_Data.isGetData = true;
-          #if 1
+          #if 0
           DebugSerial.println("----------------- Received GPS RMC Raw Data ----------------------");
           DebugSerial.println(Save_Data.GPS_Buffer);
           DebugSerial.println("----------------- End of GPS RMC Raw Data ------------------------");
@@ -632,10 +632,6 @@ void postGpsDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* senso
 	if (sendCommand(send_buf, "CONNECT", 10000, 5) == Success);
 	else errorLog(7);
 
-	//发送数据
-	if (sendCommand("AT+CIPSEND\r\n", ">", 3000, 1) == Success);
-	else errorLog(8);
-
 	memset(send_buf, 0, 400);    //清空
 
 	/*准备JSON串*/
@@ -647,23 +643,11 @@ void postGpsDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* senso
       sprintf(text, "{\"datastreams\":[{\"id\":\"%s\",\"datapoints\":[{\"value\":{\"Water Level\":%f}}]}]}", sensor_id_temp, paraVar);
   }
 
-  /*
-   {
-       "datastreams":[
-           {
-               "id":"Location",
-               "datapoints":[
-                   {
-                       "value":{
-                           "lon":Longitude,
-                           "lat":Latitude
-                       }
-                   }
-               ]
-           }
-       ]
-   }
-   */
+  #if 1
+  //发送数据
+  if (sendCommand("AT+CIPSEND\r\n", ">", 8000, 1) == Success);
+  else errorLog(8);
+  #endif
 
 	/*准备HTTP报头*/
 	send_buf[0] = 0;
@@ -707,7 +691,7 @@ void initGprs()
 	if (sendCommand("AT+CGCLASS=\"B\"\r\n", "OK\r\n", 3000, 2) == Success);
 	else errorLog(3);
   // 3gnet for UNICOM, cmnet for CMMC
-	if (sendCommand("AT+CGDCONT=1,\"IP\",\"cmnet\"\r\n", "OK", 3000, 2) == Success);
+	if (sendCommand("AT+CGDCONT=1,\"IP\",\"3gnet\"\r\n", "OK", 3000, 2) == Success);
 	else errorLog(4);
 
 	if (sendCommand("AT+CGATT=1\r\n", "OK\r\n", 3000, 2) == Success);
@@ -740,7 +724,6 @@ void errorLog(int num)
 		}
 	}
 }
-
 
 
 unsigned int sendCommand(char *Command, char *Response, unsigned long Timeout, unsigned char Retry)
