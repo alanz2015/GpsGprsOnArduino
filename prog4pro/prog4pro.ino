@@ -69,8 +69,10 @@ char OneNetServer[] = "api.heclouds.com";       //不需要修改
 
 char device_id[] = "31027885";    //修改为自己的设备ID
 char API_KEY[] = "rLhsBYEcRfk6BBAwcpNHKIZ199Y=";    //修改为自己的API_KEY
-char sensor_gps[] = "Location";
-char sensor_level[] = "Level";  // Water level
+char sensor_gps[] = "location";
+char sensor_level[] = "waterlevel";  // Water level
+/* Analog input from water level sensor */
+float waterLevel = 0.0;
 
 void displaySensorDetails(void)
 {
@@ -255,10 +257,8 @@ void setup() {
 
 void loop() {
   int retVal = 0;
-  /* Get a new sensor event */ 
-  sensors_event_t event; 
-  /* Analog input from water level sensor */
-  float waterLevel = 0.0;
+  /* Get a new acclerator sensor event */ 
+  sensors_event_t event;
   
 	Time_Cont2 = 0;
 
@@ -270,6 +270,7 @@ void loop() {
     digitalWrite(greenLED, LOW);
     delay(5000);
   }
+  
   DebugSerial.println("GPS signal quality is OK!!!");
   digitalWrite(redLED, LOW);
   digitalWrite(yellowLED, LOW);
@@ -282,10 +283,8 @@ void loop() {
       Time_Cont2 = 10;  // Exit from this read GPS loop
 	}
 
-  printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
-
   waterLevel = analogRead(waterLevelPin);
-  if (waterLevel <= 2023.00) {
+  if ((1000.00 < waterLevel) && (waterLevel <= 2023.00)) {
        if (curLightLED != 1) {
          digitalWrite(greenLED, HIGH);
          digitalWrite(yellowLED, LOW);
@@ -294,7 +293,7 @@ void loop() {
        }
   }
   else {
-    if (2023.00 < waterLevel <= 4023.00) {
+    if ((2023.00 < waterLevel) && (waterLevel <= 4023.00)) {
       if (curLightLED != 2) {
          digitalWrite(greenLED, LOW);
          digitalWrite(yellowLED, HIGH);
@@ -319,6 +318,8 @@ void loop() {
   DebugSerial.print((waterLevel - 1023.00));
   DebugSerial.println(" cm");
   #endif
+
+  printGpsBuffer();//输出解析后的数据  ,包括发送到OneNet服务器
   
   #if 1
   accel.getEvent(&event);
@@ -328,64 +329,6 @@ void loop() {
   DebugSerial.print("Z: "); DebugSerial.print(event.acceleration.z); DebugSerial.print("  ");
   DebugSerial.println("m/s^2 ");
   #endif
-}
-
-void postDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* sensor_id_temp, float data_value)
-{
-	char send_buf[400] = {0};
-	char text[100] = {0};
-	char tmp[25] = {0};
-
-	char value_str[15] = {0};
-
-	dtostrf(data_value, 3, 2, value_str); //转换成字符串输出
-
-	//连接服务器
-	memset(send_buf, 0, 400);    //清空
-	strcpy(send_buf, "AT+CIPSTART=\"TCP\",\"");
-	strcat(send_buf, OneNetServer);
-	strcat(send_buf, "\",80\r\n");
-	if (sendCommand(send_buf, "CONNECT", 10000, 5) == Success);
-	else errorLog(7);
-
-	//发送数据
-	if (sendCommand("AT+CIPSEND\r\n", ">", 3000, 1) == Success);
-	else errorLog(8);
-
-	memset(send_buf, 0, 400);    //清空
-
-	/*准备JSON串*/
-	//ARDUINO平台不支持sprintf的double的打印，只能转换到字符串然后打印
-	sprintf(text, "{\"datastreams\":[{\"id\":\"%s\",\"datapoints\":[{\"value\":%s}]}]}"
-	        , sensor_id_temp, value_str);
-
-	/*准备HTTP报头*/
-	send_buf[0] = 0;
-	strcat(send_buf, "POST /devices/");
-	strcat(send_buf, device_id_temp);
-	strcat(send_buf, "/datapoints HTTP/1.1\r\n"); //注意后面必须加上\r\n
-	strcat(send_buf, "api-key:");
-	strcat(send_buf, API_VALUE_temp);
-	strcat(send_buf, "\r\n");
-	strcat(send_buf, "Host:");
-	strcat(send_buf, OneNetServer);
-	strcat(send_buf, "\r\n");
-	sprintf(tmp, "Content-Length:%d\r\n\r\n", strlen(text)); //计算JSON串长度
-	strcat(send_buf, tmp);
-	strcat(send_buf, text);
-
-	if (sendCommand(send_buf, send_buf, 3000, 1) == Success);
-	else errorLog(9);
-
-	char sendCom[2] = {0x1A};
-	if (sendCommand(sendCom, "\"succ\"}", 3000, 1) == Success);
-	else errorLog(10);
-
-	if (sendCommand("AT+CIPCLOSE\r\n", "CLOSE OK", 3000, 1) == Success);
-	else errorLog(11);
-
-	if (sendCommand("AT+CIPSHUT\r\n", "SHUT OK", 3000, 1) == Success);
-	else errorLog(11);
 }
 
 void printGpsBuffer()
@@ -413,7 +356,8 @@ void printGpsBuffer()
       /*
        * Upload the field sampling water level data to CMCC OneNet IoT platform
        */
-			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude);
+			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude, waterLevel);
+      postGpsDataToOneNet(API_KEY, device_id, sensor_level, Save_Data.longitude, Save_Data.latitude, waterLevel);
       #endif
       DebugSerial.println("GPS DATA is usefull!");
 		}
@@ -667,7 +611,7 @@ double latitudeToOnenetFormat(char *lat_str_temp)
 	return lat_Onenet_double;
 }
 
-void postGpsDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* sensor_id_temp, char* lon_temp, char* lat_temp)
+void postGpsDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* sensor_id_temp, char* lon_temp, char* lat_temp, float paraVar)
 {
 	char send_buf[400] = {0};
 	char text[100] = {0};
@@ -695,8 +639,30 @@ void postGpsDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* senso
 
 	/*准备JSON串*/
 	//ARDUINO平台不支持sprintf的double的打印，只能转换到字符串然后打印
-	sprintf(text, "{\"datastreams\":[{\"id\":\"%s\",\"datapoints\":[{\"value\":{\"lon\":%s,\"lat\":%s}}]}]}"
-	        , sensor_id_temp, lon_str_end, lat_str_end);
+  if (! strcmp(sensor_id_temp, sensor_gps)) {
+      sprintf(text, "{\"datastreams\":[{\"id\":\"%s\",\"datapoints\":[{\"value\":{\"lon\":%s,\"lat\":%s}}]}]}", sensor_id_temp, lon_str_end, lat_str_end);
+  }
+  if (! strcmp(sensor_id_temp, sensor_level)) {
+      sprintf(text, "{\"datastreams\":[{\"id\":\"%s\",\"datapoints\":[{\"value\":{\"Water Level\":%f}}]}]}", sensor_id_temp, paraVar);
+  }
+
+  /*
+   {
+       "datastreams":[
+           {
+               "id":"Location",
+               "datapoints":[
+                   {
+                       "value":{
+                           "lon":Longitude,
+                           "lat":Latitude
+                       }
+                   }
+               ]
+           }
+       ]
+   }
+   */
 
 	/*准备HTTP报头*/
 	send_buf[0] = 0;
