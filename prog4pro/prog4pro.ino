@@ -357,8 +357,8 @@ void printGpsBuffer()
        * Upload the field sampling water level data to CMCC OneNet IoT platform
        */
 			postGpsDataToOneNet(API_KEY, device_id, sensor_gps, Save_Data.longitude, Save_Data.latitude, waterLevel);
-      delay(1000);
-      postGpsDataToOneNet(API_KEY, device_id, sensor_level, Save_Data.longitude, Save_Data.latitude, waterLevel);
+      // delay(1000);
+      // postGpsDataToOneNet(API_KEY, device_id, sensor_level, Save_Data.longitude, Save_Data.latitude, waterLevel);
       #endif
       // DebugSerial.println("GPS DATA is usefull!");
 		}
@@ -620,10 +620,12 @@ void postGpsDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* senso
 
 	char lon_str_end[15] = {0};
 	char lat_str_end[15] = {0};
+  char paraVarStr[10] = {0};
 
 	dtostrf(longitudeToOnenetFormat(lon_temp), 3, 6, lon_str_end); //转换成字符串输出
 	dtostrf(latitudeToOnenetFormat(lat_temp), 2, 6, lat_str_end); //转换成字符串输出
-
+  dtostrf(paraVar, 4, 2, paraVarStr);
+  
 	//连接服务器
 	memset(send_buf, 0, 400);    //清空
 	strcpy(send_buf, "AT+CIPSTART=\"TCP\",\"");
@@ -636,13 +638,22 @@ void postGpsDataToOneNet(char* API_VALUE_temp, char* device_id_temp, char* senso
 
 	/*准备JSON串*/
 	//ARDUINO平台不支持sprintf的double的打印，只能转换到字符串然后打印
+  /*
+{\"datastreams\":[{\"id\":%s,\"datapoints\":[{\"lon\":%s,\"lat\":%s}]}{\"id\":\"waterlevel\",\"datapoints\":[{\"waterlevel\":%s}]}]}
+*/
+  #if 1
+  sprintf(text, "{\"datastreams\":[{\"id\":%s,\"datapoints\":[{\"lon\":%s,\"lat\":%s}]}{\"id\":\"waterlevel\",\"datapoints\":[{\"waterlevel\":%s}]}]}", sensor_id_temp, lon_str_end, lat_str_end, paraVarStr);
+  #endif
+
+  #if 0
   if (! strcmp(sensor_id_temp, sensor_gps)) {
       sprintf(text, "{\"datastreams\":[{\"id\":\"%s\",\"datapoints\":[{\"value\":{\"lon\":%s,\"lat\":%s}}]}]}", sensor_id_temp, lon_str_end, lat_str_end);
   }
   if (! strcmp(sensor_id_temp, sensor_level)) {
       sprintf(text, "{\"datastreams\":[{\"id\":\"%s\",\"datapoints\":[{\"value\":{\"Water Level\":%f}}]}]}", sensor_id_temp, paraVar);
   }
-
+  #endif
+  
   #if 1
   //发送数据
   if (sendCommand("AT+CIPSEND\r\n", ">", 8000, 1) == Success);
