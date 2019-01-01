@@ -1,6 +1,5 @@
-=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2018.12.10 21:27:11 =~=~=~=~=~=~=~=~=~=~=~=
-$E^i^^^^-V
-P.Q2&%4G!Accelerometer Test
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2018.12.11 21:07:38 =~=~=~=~=~=~=~=~=~=~=~=
+Accelerometer Test
 
 ------------------------------------
 Sensor:       ADXL345
@@ -32,15 +31,15 @@ AT+CREG?
 AT+CGCLASS="B"
 
 ==========receive AT Command:==========
-2
+3
 
 OK
 
 ---------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
+AT+CGDCONT=1,"IP","cmnet"
 
 ==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
+AT+CGCLASS="B"AT+CGDCONT=1,"IP","cmnet"
 OK
 ---------send AT Command:---------
 AT+CGATT=1
@@ -53,29 +52,32 @@ OK
 ---------send AT Command:---------
 AT+CLPORT="TCP","2000"
 
-==========receive AT Command:==========
+---------send AT Command:---------
+AT+CLPORT="TCP","2000"
 
-Call Ready
+==========receive AT Command:==========
 AT+CGATT=1AT+CLPORT="TCP","2000"
+ERROR
+AT+CLPORT="TCP","2000"
 OK
 GPRS init ok.
 Setup done!
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
+Success to lock GPS satellite, 16
+Success to lock GPS satellite, 16
+Success to lock GPS satellite, 16
+Success to lock GPS satellite, 16
 Success to lock GPS satellite, 9
 Success to lock GPS satellite, 9
 Success to lock GPS satellite, 9
-Save_Data.UTCDate = 101218
-Save_Data.UTCTime = 132719
-Save_Data.latitude = 2233.812563
+----------------- Received GPS RMC Raw Data ----------------------
+$GNRMC,130744.000,A,2233.818749,N,11407.172207,E,0.12,0.00,111218,,,A*75
+----------------- End of GPS RMC Raw Data ------------------------
+Save_Data.UTCDate = 111218
+Save_Data.UTCTime = 130744
+Save_Data.latitude = 2233.818749
 Save_Data.N_S = N
-Save_Data.longitude = 11407.179258
+Save_Data.longitude = 11407.172207
 Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
 
 ---------send AT Command:---------
 AT+CIPSTART="TCP","api.heclouds.com",80
@@ -94,14 +96,12 @@ AT+CIPSEND
  FAIL
 AT+CIPSEND
 ERROR
-
-Call Ready
 ERROR8
 
 ---------send AT Command:---------
 AT
 
-=========Accelerometer Test
+========Accelerometer Test
 
 ------------------------------------
 Sensor:       ADXL345
@@ -133,17 +133,15 @@ AT+CREG?
 AT+CGCLASS="B"
 
 ==========receive AT Command:==========
-2
+3
 
 OK
 
 ---------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
+AT+CGDCONT=1,"IP","cmnet"
 
 ==========receive AT Command:==========
-
-Call Ready
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
+AT+CGCLASS="B"AT+CGDCONT=1,"IP","cmnet"
 OK
 ---------send AT Command:---------
 AT+CGATT=1
@@ -152,412 +150,35 @@ AT+CGATT=1
 
 
 OK
+
+---------send AT Command:---------
+AT+CLPORT="TCP","2000"
 
 ---------send AT Command:---------
 AT+CLPORT="TCP","2000"
 
 ==========receive AT Command:==========
 AT+CGATT=1AT+CLPORT="TCP","2000"
+ERROR
+AT+CLPORT="TCP","2000"
 OK
 GPRS init ok.
 Setup done!
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
+Success to lock GPS satellite, 16
+Success to lock GPS satellite, 16
+Success to lock GPS satellite, 16
+Success to lock GPS satellite, 16
 Success to lock GPS satellite, 9
 Success to lock GPS satellite, 9
 Success to lock GPS satellite, 9
-Save_Data.UTCDate = 101218
-Save_Data.UTCTime = 132744
-Save_Data.latitude = 2233.812563
+----------------- Received GPS RMC Raw Data ----------------------
+$GNRMC,130800.000,A,2233.817689,N,11407.179894,E,0.09,0.00,111218,,,A*79
+----------------- End of GPS RMC Raw Data ------------------------
+Save_Data.UTCDate = 111218
+Save_Data.UTCTime = 130800
+Save_Data.latitude = 2233.817689
 Save_Data.N_S = N
-Save_Data.longitude = 11407.179258
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-ERROR
-
-+CPIN: READY
-
-Call Ready
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-STATE: PDP DEACT
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- FAIL
-AT+CIPSEND
-ERROR
-
-Call Ready
-ERROR8
-
----------send AT Command:---------
-AT
-
-=========Accelerometer Test
-
-------------------------------------
-Sensor:       ADXL345
-Driver Ver:   1
-Unique ID:    12345
-Max Value:    -156.91 m/s^2
-Min Value:    156.91 m/s^2
-Resolution:   0.04 m/s^2
-------------------------------------
-
-Data Rate:    100  Hz
-Range:         +/- 2  g
-
-
----------send AT Command:---------
-AT
-
-==========receive AT Command:==========
-
-Call Ready
-AT
-OK
-
----------send AT Command:---------
-AT+CREG?
-
-==========receive AT Command:==========
-AT+CREG?
-+CREG: 0,
----------send AT Command:---------
-AT+CGCLASS="B"
-
-==========receive AT Command:==========
-2
-
-OK
-
----------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
-
-==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
-OK
----------send AT Command:---------
-AT+CGATT=1
-
-==========receive AT Command:==========
-
-
-OK
-
----------send AT Command:---------
-AT+CLPORT="TCP","2000"
-
-==========receive AT Command:==========
-AT+CGATT=1AT+CLPORT="TCP","2000"
-OK
-GPRS init ok.
-Setup done!
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Save_Data.UTCDate = 101218
-Save_Data.UTCTime = 132818
-Save_Data.latitude = 2233.812563
-Save_Data.N_S = N
-Save_Data.longitude = 11407.179258
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-ERROR
-
-+CPIN: READY
-
-Call Ready
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-STATE: PDP DEACT
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- FAIL
-AT+CIPSEND
-ERROR
-
-Call Ready
-ERROR8
-
----------send AT Command:---------
-AT
-
-=========Accelerometer Test
-
-------------------------------------
-Sensor:       ADXL345
-Driver Ver:   1
-Unique ID:    12345
-Max Value:    -156.91 m/s^2
-Min Value:    156.91 m/s^2
-Resolution:   0.04 m/s^2
-------------------------------------
-
-Data Rate:    100  Hz
-Range:         +/- 2  g
-
-
----------send AT Command:---------
-AT
-
-==========receive AT Command:==========
-
-Call Ready
-AT
-OK
-
----------send AT Command:---------
-AT+CREG?
-
-==========receive AT Command:==========
-AT+CREG?
-+CREG: 0,
----------send AT Command:---------
-AT+CGCLASS="B"
-
-==========receive AT Command:==========
-2
-
-OK
-
----------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
-
-==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
-OK
----------send AT Command:---------
-AT+CGATT=1
-
-==========receive AT Command:==========
-
-
-OK
-
----------send AT Command:---------
-AT+CLPORT="TCP","2000"
-
-==========receive AT Command:==========
-AT+CGATT=1AT+CLPORT="TCP","2000"
-OK
-GPRS init ok.
-Setup done!
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Save_Data.UTCDate = 101218
-Save_Data.UTCTime = 132852
-Save_Data.latitude = 2233.812563
-Save_Data.N_S = N
-Save_Data.longitude = 11407.179258
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-STATE: PDP DEACT
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- FAIL
-AT+CIPSEND
-ERROR
-
-Call Ready
-ERROR8
-
----------send AT Command:---------
-AT
-
-=========Accelerometer Test
-
-------------------------------------
-Sensor:       ADXL345
-Driver Ver:   1
-Unique ID:    12345
-Max Value:    -156.91 m/s^2
-Min Value:    156.91 m/s^2
-Resolution:   0.04 m/s^2
-------------------------------------
-
-Data Rate:    100  Hz
-Range:         +/- 2  g
-
-
----------send AT Command:---------
-AT
-
-==========receive AT Command:==========
-AT
-OK
-
----------send AT Command:---------
-AT+CREG?
-
-==========receive AT Command:==========
-AT+CREG?
-+CREG: 0,
----------send AT Command:---------
-AT+CGCLASS="B"
-
-==========receive AT Command:==========
-2
-
-OK
-
----------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
-
-==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
-OK
----------send AT Command:---------
-AT+CGATT=1
-
-==========receive AT Command:==========
-
-
-Call Ready
-
-OK
-
----------send AT Command:---------
-AT+CLPORT="TCP","2000"
-
----------send AT Command:---------
-AT+CLPORT="TCP","2000"
-
-==========receive AT Command:==========
-AT+CGATT=1ERROR6
-
----------send AT Command:---------
-AT
-
-=========Accelerometer Test
-
-------------------------------------
-Sensor:       ADXL345
-Driver Ver:   1
-Unique ID:    12345
-Max Value:    -156.91 m/s^2
-Min Value:    156.91 m/s^2
-Resolution:   0.04 m/s^2
-------------------------------------
-
-Data Rate:    100  Hz
-Range:         +/- 2  g
-
-
----------send AT Command:---------
-AT
-
-==========receive AT Command:==========
-AT
-OK
-
----------send AT Command:---------
-AT+CREG?
-
-==========receive AT Command:==========
-AT+CREG?
-+CREG: 0,
----------send AT Command:---------
-AT+CGCLASS="B"
-
-==========receive AT Command:==========
-2
-
-OK
-
----------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
-
-==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
-OK
----------send AT Command:---------
-AT+CGATT=1
-
-==========receive AT Command:==========
-
-
-OK
-
----------send AT Command:---------
-AT+CLPORT="TCP","2000"
-
-==========receive AT Command:==========
-AT+CGATT=1AT+CLPORT="TCP","2000"
-Call Ready
-
-OK
-GPRS init ok.
-Setup done!
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Save_Data.UTCDate = 101218
-Save_Data.UTCTime = 132923
-Save_Data.latitude = 2233.812563
-Save_Data.N_S = N
-Save_Data.longitude = 11407.179258
+Save_Data.longitude = 11407.179894
 Save_Data.E_W = E
 
 ---------send AT Command:---------
@@ -572,33 +193,21 @@ AT+CIPSTART="TCP","api.heclouds.com",80
 ---------send AT Command:---------
 AT+CIPSTART="TCP","api.heclouds.com",80
 
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-ERROR
-
-RDY
-
-+CFUN: 1
-
-+CPIN: READY
-
-Call Ready
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-STATE: PDP DEACT
-
-CONNECT
 ---------send AT Command:---------
-AT+CIPSEND
+AT+CIPSTART="TCP","api.heclouds.com",80
 
 ==========receive AT Command:==========
- FAIL
-AT+CIPSEND
+AT+CIPSTART="TCP","api.heclouds.com",80
 ERROR
-
-Call Ready
-ERROR8
+AT+CIPSTART="TCP","api.heclouds.com",80
+ERROR
+AT+CIPSTART="TCP","api.heclouds.com",80
+ERROR
+AT+CIPSTART="TCP","api.heclouds.com",80
+ERROR
+AT+CIPSTART="TCP","api.heclouds.com",80
+ERROR
+ERROR7
 
 ---------send AT Command:---------
 AT
@@ -622,8 +231,6 @@ Range:         +/- 2  g
 AT
 
 ==========receive AT Command:==========
-
-Call Ready
 AT
 OK
 
@@ -637,125 +244,15 @@ AT+CREG?
 AT+CGCLASS="B"
 
 ==========receive AT Command:==========
-2
+3
 
 OK
 
 ---------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
+AT+CGDCONT=1,"IP","cmnet"
 
 ==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
-OK
----------send AT Command:---------
-AT+CGATT=1
-
-==========receive AT Command:==========
-
-
-OK
-
----------send AT Command:---------
-AT+CLPORT="TCP","2000"
-
-==========receive AT Command:==========
-AT+CGATT=1AT+CLPORT="TCP","2000"
-OK
-GPRS init ok.
-Setup done!
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 14
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Success to lock GPS satellite, 9
-Save_Data.UTCDate = 101218
-Save_Data.UTCTime = 133008
-Save_Data.latitude = 2233.812563
-Save_Data.N_S = N
-Save_Data.longitude = 11407.179258
-Save_Data.E_W = E
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
----------send AT Command:---------
-AT+CIPSTART="TCP","api.heclouds.com",80
-
-==========receive AT Command:==========
-AT+CIPSTART="TCP","api.heclouds.com",80
-ERROR
-
-+CPIN: READY
-
-Call Ready
-AT+CIPSTART="TCP","api.heclouds.com",80
-OK
-
-STATE: PDP DEACT
-
-CONNECT
----------send AT Command:---------
-AT+CIPSEND
-
-==========receive AT Command:==========
- FAIL
-AT+CIPSEND
-ERROR
-
-Call Ready
-ERROR8
-
----------send AT Command:---------
-AT
-
-=========Accelerometer Test
-
-------------------------------------
-Sensor:       ADXL345
-Driver Ver:   1
-Unique ID:    12345
-Max Value:    -156.91 m/s^2
-Min Value:    156.91 m/s^2
-Resolution:   0.04 m/s^2
-------------------------------------
-
-Data Rate:    100  Hz
-Range:         +/- 2  g
-
-
----------send AT Command:---------
-AT
-
-==========receive AT Command:==========
-
-Call Ready
-AT
-OK
-
----------send AT Command:---------
-AT+CREG?
-
-==========receive AT Command:==========
-AT+CREG?
-+CREG: 0,
----------send AT Command:---------
-AT+CGCLASS="B"
-
-==========receive AT Command:==========
-2
-
-OK
-
----------send AT Command:---------
-AT+CGDCONT=1,"IP","3gnet"
-
-==========receive AT Command:==========
-AT+CGCLASS="B"AT+CGDCONT=1,"IP","3gnet"
+AT+CGCLASS="B"AT+CGDCONT=1,"IP","cmnet"
 OK
 ---------send AT Command:---------
 AT+CGATT=1
@@ -767,8 +264,3 @@ OK
 
 ---------send AT Command:---------
 AT+CLPORT="TCP","2000"
-
-==========receive AT Command:==========
-AT+CGATT=1AT+CLPORT="TCP","2000"
-OK
-GPRS init ok.

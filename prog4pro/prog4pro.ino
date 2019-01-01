@@ -546,7 +546,7 @@ int gpsRead() {
 				{
 					memcpy(Save_Data.GPS_Buffer, GPS_BufferHead, GPS_BufferTail - GPS_BufferHead);
 					Save_Data.isGetData = true;
-          #if 0
+          #if 1
           DebugSerial.println("----------------- Received GPS RMC Raw Data ----------------------");
           DebugSerial.println(Save_Data.GPS_Buffer);
           DebugSerial.println("----------------- End of GPS RMC Raw Data ------------------------");
@@ -702,7 +702,7 @@ void initGprs()
 	if (sendCommand("AT+CGCLASS=\"B\"\r\n", "OK\r\n", 3000, 2) == Success);
 	else errorLog(3);
   // 3gnet for UNICOM, cmnet for CMMC
-	if (sendCommand("AT+CGDCONT=1,\"IP\",\"3gnet\"\r\n", "OK", 3000, 2) == Success);
+	if (sendCommand("AT+CGDCONT=1,\"IP\",\"cmnet\"\r\n", "OK", 3000, 2) == Success);
 	else errorLog(4);
 
 	if (sendCommand("AT+CGATT=1\r\n", "OK\r\n", 3000, 2) == Success);
